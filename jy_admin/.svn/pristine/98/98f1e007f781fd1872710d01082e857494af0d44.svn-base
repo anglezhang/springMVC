@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+   .login-cont{width:100%;background:url(../image/bj-login.jpg) no-repeat center top;}
+   .login-logo{ text-align:center;padding:150px 0 50px 0;}
+   .login-main{width:380px;margin:0 auto;}
+   .login-main .login-name{margin-bottom:40px;}
+   .login-main .login-name input{height:60px;line-height:60px;font-size:18px;color:#fff;font-family:"微软雅黑";background:url(../image/lb.png) no-repeat left top;filter:alpha(opacity:70);opacity: 0.7;padding-left:75px;border-radius:3px;width:305px;margin-bottom:3px;}
+   .login-main .login-pass{margin-bottom:10px;}
+   .login-main .login-pass input{height:60px;line-height:60px;font-size:18px;color:#fff;font-family:"微软雅黑";background:url(../image/lb.png) no-repeat left -62px;filter:alpha(opacity:70);opacity: 0.7;padding-left:75px;border-radius:3px;width:305px;margin-bottom:3px;}
+   .login-wen{width:362px;margin-bottom:20px;padding:0 9px;}
+   .login-wen-right{float:right;}
+   .login-wen-right a{color:#fff;font-size:14px;font-family:"微软雅黑"; text-decoration:none;}
+   .login-button{text-align:right;}
+   .login-button a {height:47px;line-height:47px;width:168px;background:#21db6c;border-radius:3px;color:#fff;display:inline-block; text-align:center;font-size:22px;font-family:"微软雅黑";}
+   .login-button a:hover{background:#1ac15d;}
+   .marginTop1{margin-top:1px;}
+   .marginLeft3{margin-left:3px;}
+   .checkbox_2{float:left; background: url(../image/checkbox3.png) left center no-repeat; text-align:right; cursor:pointer; -moz-user-select: none; -webkit-user-select: none;-ms-user-select: none;  user-select: none; text-indent:20px;color:#fff;}
+   .checkbox_2 input{ display:none;}
+   .clear{clear:both;}
+   .foont14-73{color:#ff8473;font-size:14px;padding-left:9px;display:inline-block; display:block; height:20px; line-height:20px;}
+   .marginBottom3{margin-bottom:3px;}

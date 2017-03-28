@@ -1,0 +1,72 @@
+/* 按钮扩展 CSS */
+/* 调用 ： <a class="btn btn-add"></a> */
+
+
+
+    .btn{ width: 22px; height: 20px; float: left; display: inline; margin: 0px 3px;; cursor: pointer; disabled="disabled"; background-image: url(../image/btn-ex-bg.png); overflow: hidden;}/* 每个按钮都需添加 btn 类 */
+
+    .btn-add{ background-position: 0 0;}
+    .btn-delete{ background-position: -23px 0;}
+    .btn-xj{ background-position: -46px 0;}
+    .btn-cy{ background-position: -69px 0;}
+    .btn-qr{ background-position: -92px 0;}
+    .btn-ck{ background-position: -115px 0;}
+    .btn-edit{ background-position: -138px 0;}
+    .btn-ss{ background-position: -161px 0;}
+    .btn-fj{ background-position: -184px 0;}
+    .btn-xzdh{ background-position: -207px 0;}
+    .btn-hmd{ background-position: -230px 0;}
+    .btn-tz{ background-position: -253px 0;}
+    .btn-rz{ background-position: -276px 0;}
+    .btn-sh{ background-position: -299px 0;}
+    .btn-on{ background-position: -322px 0;}
+    .btn-off{ background-position: -345px 0;}
+    .btn-tj{ background-position: -368px 0;}
+    .btn-sl{ background-position: -391px 0;}
+    .btn-sljg{ background-position: -414px 0;}
+    .btn-tjjgxm{ background-position: -437px 0;}
+    .btn-tjjgcx{ background-position: -460px 0;}
+    .btn-rm{ background-position: -483px 0;}
+    .btn-czmm{ background-position: -506px 0;}
+    .btn-zx{ background-position: -529px 0;}
+    .btn-jx{ background-position: -552px 0;}
+    .btn-qxtj{ background-position: -575px 0;}
+    .btn-qxrm{ background-position: -598px 0;}
+    .btn-qxzx{ background-position: -621px 0;}
+    .btn-qxjx{ background-position: -644px 0;}
+	.btn-zd{ background-position:  -667px 0;}
+    .btn-qxzd{ background-position: -690px 0;}
+
+    
+    .btn-add:active{ background-position: 0 -20px;}
+    .btn-delete:active{ background-position: -23px -20px;}
+    .btn-xj:active{ background-position: -46px -20px;}
+    .btn-cy:active{ background-position: -69px -20px;}
+    .btn-qr:active{ background-position: -92px -20px;}
+    .btn-ck:active{ background-position: -115px -20px;}
+    .btn-edit:active{ background-position: -138px -20px;}
+    .btn-ss:active{ background-position: -161px -20px;}
+    .btn-fj:active{ background-position: -184px -20px;}
+    .btn-xzdh:active{ background-position: -207px -20px;}
+    .btn-hmd:active{ background-position: -230px -20px;}
+    .btn-tz:active{ background-position: -253px -20px;}
+    .btn-rz:active{ background-position: -276px -20px;}
+    .btn-sh:active{ background-position: -299px -20px;}
+    .btn-on:active{ background-position: -322px -20px;}
+    .btn-off:active{ background-position: -345px -20px;}
+    .btn-tj:active{ background-position: -368px -20px;}
+    .btn-sl:active{ background-position: -391px -20px;}
+    .btn-sljg:active{ background-position: -414px -20px;}
+    .btn-tjjgxm:active{ background-position: -437px -20px;}
+    .btn-tjjgcx:active{ background-position: -460px -20px;}
+    .btn-rm:active{ background-position: -483px -20px;}
+    .btn-czmm:active{ background-position: -506px -20px;}
+    .btn-zx:active{ background-position: -529px -20px;}
+    .btn-jx:active{ background-position: -552px -20px;}
+    .btn-qxtj:active{ background-position: -575px -20px;}
+    .btn-qxrm:active{ background-position: -598px -20px;}
+    .btn-qxzx:active{ background-position: -621px -20px;}
+    .btn-qxjx:active{ background-position: -644px -20px;}
+    .btn-zd:active{ background-position:  -667px -20px;}
+    .btn-qxzd:active{ background-position: -690px -20px;}
+    

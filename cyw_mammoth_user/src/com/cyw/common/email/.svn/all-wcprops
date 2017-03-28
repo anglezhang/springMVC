@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email
+END
+SimpleMailSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email/SimpleMailSender.java
+END
+EmailSendTool.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email/EmailSendTool.java
+END
+MailSenderInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email/MailSenderInfo.java
+END
+MyAuthenticator.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email/MyAuthenticator.java
+END
+EmailSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email/EmailSender.java
+END
+MessageTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/email/MessageTemplate.java
+END

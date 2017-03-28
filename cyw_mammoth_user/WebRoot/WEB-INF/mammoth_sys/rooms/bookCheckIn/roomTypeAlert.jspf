@@ -1,0 +1,32 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!--房型ALERT-->
+<div id="roomTypeAlertDiv" class="alertDiv2 moveBar2 alertDiv roomButton moveBar" style="z-index:22">
+	<div class="alertMain" style="width:500px; top:100px; margin-top:250px;">
+		<h4 class="moveDivAlert">
+			房类信息<a href="javascript:closeDiv('roomTypeAlertDiv');" class="closeDiv"></a>
+		</h4>
+		<div class="borderSolid">
+			<div class="roomButtonFblock" style="overflow-y:auto;height: 200px;">
+				<table id="roomTypeAlertTable" width="80%" class="margin-left-40">
+				</table>
+			</div>
+			<table width="460">
+				<tr>
+					<td>
+						<label>
+							<input class="checkbox" id="chkall" name="chkall" type="checkbox"> 
+							<span class="margin-left-10">全选</span>
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="javascript:closeDiv('roomTypeAlertDiv');" class="button_03 floatR margin-left-10">取消(N)</a>
+						<a href="javascript:saveRoomType();" class="button_03 floatR">确定(Y)</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!--/房型-->

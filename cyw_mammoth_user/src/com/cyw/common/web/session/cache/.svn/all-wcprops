@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/session/cache
+END
+MemcachedDangaCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/session/cache/MemcachedDangaCache.java
+END
+MemcachedSpyCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/session/cache/MemcachedSpyCache.java
+END
+SessionCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/session/cache/SessionCache.java
+END
+EhcacheSessionCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/session/cache/EhcacheSessionCache.java
+END

@@ -1,0 +1,269 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Mammoth/!svn/ver/2759/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl
+END
+BookRoomCheckInDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/1758/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/BookRoomCheckInDaoImpl.java
+END
+HroomPlanListDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/2584/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HroomPlanListDaoImpl.java
+END
+HexchangeDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HexchangeDaoImpl.java
+END
+HroomPlanDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/3158/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HroomPlanDaoImpl.java
+END
+BillsDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/BillsDaoImpl.java
+END
+HroomCharactersDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/2609/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HroomCharactersDaoImpl.java
+END
+RmtypeNumDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/RmtypeNumDaoImpl.java
+END
+GrpDocDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2519/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/GrpDocDaoImpl.java
+END
+HconsumeDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/1426/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HconsumeDaoImpl.java
+END
+HolidaysDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3117/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HolidaysDaoImpl.java
+END
+HbuildingDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2609/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HbuildingDaoImpl.java
+END
+HroomTypeDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2609/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HroomTypeDaoImpl.java
+END
+HroomDefineDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/2609/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HroomDefineDaoImpl.java
+END
+CodeCareDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/1529/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/CodeCareDaoImpl.java
+END
+GstPriceListDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/GstPriceListDaoImpl.java
+END
+GuestdocDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3277/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/GuestdocDaoImpl.java
+END
+ShiftLogDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/2752/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/ShiftLogDaoImpl.java
+END
+OperatorDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3196/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/OperatorDaoImpl.java
+END
+BookCheckInDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/3058/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/BookCheckInDaoImpl.java
+END
+BookRoomDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/1256/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/BookRoomDaoImpl.java
+END
+ReportDocDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2535/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/ReportDocDaoImpl.java
+END
+WorkGroupRightsDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/WorkGroupRightsDaoImpl.java
+END
+HgstOriDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Mammoth/!svn/ver/2570/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HgstOriDaoImpl.java
+END
+HroomTypeImgDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HroomTypeImgDaoImpl.java
+END
+HsetlKindDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HsetlKindDaoImpl.java
+END
+ParameterDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/1342/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/ParameterDaoImpl.java
+END
+GstCreditAuthDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/GstCreditAuthDaoImpl.java
+END
+RoomsDiaryDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/2037/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/RoomsDiaryDaoImpl.java
+END
+TADocDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/2114/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/TADocDaoImpl.java
+END
+RoomNumDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Mammoth/!svn/ver/2181/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/RoomNumDaoImpl.java
+END
+HfunctionWorkgroupListDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Mammoth/!svn/ver/2724/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HfunctionWorkgroupListDaoImpl.java
+END
+WorkGroupDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2757/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/WorkGroupDaoImpl.java
+END
+HcountryDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HcountryDaoImpl.java
+END
+GstBillDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/GstBillDaoImpl.java
+END
+HfolkDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HfolkDaoImpl.java
+END
+FguestDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2393/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/FguestDaoImpl.java
+END
+HsettleDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HsettleDaoImpl.java
+END
+BPaiedDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/BPaiedDaoImpl.java
+END
+NoguestDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Mammoth/!svn/ver/3194/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/NoguestDaoImpl.java
+END
+RoomsDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3268/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/RoomsDaoImpl.java
+END
+HfunctionControlDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Mammoth/!svn/ver/2753/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HfunctionControlDaoImpl.java
+END
+HcodesDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/1528/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HcodesDaoImpl.java
+END
+HfunctionDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2757/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HfunctionDaoImpl.java
+END
+HgstOriTypeDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/2143/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/dao/impl/HgstOriTypeDaoImpl.java
+END

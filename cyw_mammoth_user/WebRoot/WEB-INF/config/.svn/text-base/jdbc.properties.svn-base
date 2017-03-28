@@ -1,0 +1,24 @@
+#sqlserver\u914D\u7F6E
+jdbc.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+jdbc.url=jdbc:sqlserver://10.0.1.200:21433;DatabaseName=mammoth
+jdbc.username=sa
+jdbc.password=Mammoth123
+#test_database
+#jdbc.url=jdbc:sqlserver://10.0.1.200:11433;DatabaseName=mammoth
+#jdbc.username=sa
+#jdbc.password=test123
+
+#dataSource slave
+jdbc_slave.url=jdbc:sqlserver://10.0.1.200:21433;DatabaseName=mammoth
+jdbc_slave.username=sa
+jdbc_slave.password=Mammoth123
+
+
+cpool.checkoutTimeout=10000
+cpool.minPoolSize=20
+cpool.maxPoolSize=5000
+  
+cpool.maxIdleTime=7200
+cpool.maxIdleTimeExcessConnections=1800
+cpool.acquireIncrement=10

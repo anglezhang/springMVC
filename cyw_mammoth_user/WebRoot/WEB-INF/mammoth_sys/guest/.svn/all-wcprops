@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Mammoth/!svn/ver/3121/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/guest
+END
+guest.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/3121/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/guest/guest.jsp
+END
+guestdetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3107/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/guest/guestdetail.jsp
+END
+group.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/3121/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/guest/group.jsp
+END
+groupdetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3107/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/guest/groupdetail.jsp
+END

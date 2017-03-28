@@ -1,0 +1,13 @@
+@charset "utf-8";
+.fg_column_readOnly{
+	background-color:#EAEAEA;
+}
+.fg_column_readOnly_cell{
+	color:grey;
+}
+.select-row-yellow{
+	color: #ee6767;
+}
+.eidt-row-blue{
+	color: blue;
+}

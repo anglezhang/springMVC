@@ -1,0 +1,406 @@
+package com.zoomoor.jy.action;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.zoomoor.admin.dao.SysUserDao;
+import com.zoomoor.admin.entity.SysUser;
+import com.zoomoor.admin.service.SysAuthenticationSvc;
+import com.zoomoor.common.base.bean.Pager;
+import com.zoomoor.common.web.ResponseUtils;
+import com.zoomoor.common.web.session.SessionProvider;
+import com.zoomoor.jy.entity.CarCustmerMapping;
+import com.zoomoor.jy.entity.CustomerAppoit;
+import com.zoomoor.jy.entity.InfoCar;
+import com.zoomoor.jy.entity.InfoCustome;
+import com.zoomoor.jy.entity.InfoDept;
+import com.zoomoor.jy.entity.ParamConfig;
+import com.zoomoor.jy.entity.Servicetype;
+import com.zoomoor.jy.service.CarCustmerMappingSvc;
+import com.zoomoor.jy.service.CustomerAppoitSvc;
+import com.zoomoor.jy.service.InfoCarSvc;
+import com.zoomoor.jy.service.InfoCustomeSvc;
+import com.zoomoor.jy.service.InfoDeptSvc;
+import com.zoomoor.jy.service.ParamConfigSvc;
+import com.zoomoor.jy.service.ServicetypeSvc;
+import com.zoomoor.jy.util.ResponseMsgUtil;
+
+/**
+ * 描述：AppOrderAct 预约订单
+ * 
+ * @author Zhangzhenxing
+ * @Date 2015年7月17日 下午5:39:48
+ * @version 1.0
+ */
+@Controller
+@Transactional
+public class AppOrderAct {
+
+	// 日志输入
+	private static final Logger log = LoggerFactory
+			.getLogger(AppOrderAct.class);
+	/**
+	 * 客户预约服务：管理客户预约订单
+	 * */
+	@Autowired
+	private CustomerAppoitSvc cusSvc;
+	/**
+	 * 客户信息服务：管理客户资料
+	 * */
+	@Autowired
+	private InfoCustomeSvc customerSvc;
+	/**
+	 * 客户车辆信息：记录客户车辆信息
+	 * */
+	@Autowired
+	private InfoCarSvc infCarSvc;
+
+	/**
+	 * 部门管理服务
+	 * */
+	@Autowired
+	private InfoDeptSvc infoDeptSvc;
+
+	/**
+	 * 登录用户管理
+	 * */
+	@Autowired
+	private SessionProvider session;
+
+	/**
+	 * 数据字典
+	 * */
+	@Autowired
+	private ParamConfigSvc configSvc;
+
+	/**
+	 * 车辆信息和客户关系服务
+	 * */
+	@Autowired
+	private CarCustmerMappingSvc carCustomerSvc;
+
+	/**
+	 * 用户管理svs
+	 * */
+	@Autowired
+	private SysUserDao userDao;
+	
+	/**
+	 * 服务类型管理
+	 * */
+	@Autowired
+	private ServicetypeSvc typeSvc;
+
+	/**
+	 * 获取预约订单列表
+	 * */
+	@RequestMapping("/apporder/list.do")
+	public String list(HttpServletRequest request,
+			HttpServletResponse response, Pager pager, ModelMap model,
+			String queryTel, String queryPlatenum, Integer queryAppType,
+			Integer querySource, String queryBegintime, String queryEndtime,
+			String querySellstart, String querySellend,Integer queryStatus) {
+		// 查询分页对象
+		pager = cusSvc.getPager(pager, queryTel, queryPlatenum, queryAppType,
+				querySource, queryBegintime, queryEndtime,querySellstart,querySellend,queryStatus);
+		model.addAttribute("pager", pager);
+		model.addAttribute("queryTel", queryTel);
+		model.addAttribute("queryPlatenum", queryPlatenum);
+		model.addAttribute("queryAppType", queryAppType);
+		model.addAttribute("querySource", querySource);
+		model.addAttribute("queryBegintime", queryBegintime);
+		model.addAttribute("queryEndtime", queryEndtime);
+		List<Servicetype> serviceItem = typeSvc.getAll();
+		model.addAttribute("querySellstart", querySellstart);
+		model.addAttribute("querySellend",querySellend);
+		model.addAttribute("serviceItem", serviceItem);
+		model.addAttribute("queryStatus", queryStatus);
+		return "apporder/list";
+	}
+
+	/**
+	 * 描述：添加服务订单
+	 * */
+	@RequestMapping("app/orderadd.do")
+	public String add(HttpServletRequest request, HttpServletResponse response,
+			ModelMap model) {
+		SysUser user = session.getUserSession(request,
+				SysAuthenticationSvc.AUTH_USER);
+		model.addAttribute("user", user);
+		model.addAttribute("time", new Date(System.currentTimeMillis()));
+		List<Servicetype> serviceItem = typeSvc.getAll();
+		model.addAttribute("serviceItem", serviceItem);
+		return "apporder/add";
+	}
+
+	/**
+	 * 描述：保存预约单
+	 * */
+	@RequestMapping("/app/ordersave.do")
+	public void save(HttpServletRequest request, HttpServletResponse response,
+			ModelMap model, CustomerAppoit customer,Integer[] appoittypes) {
+		SysUser user = session.getUserSession(request,
+				SysAuthenticationSvc.AUTH_USER);
+		if(appoittypes != null){
+			String appoittype = "";
+			for(Integer app:appoittypes){
+				appoittype += (app + ",");
+			}
+			if(appoittype.contains(",")){
+				appoittype.substring(0, appoittype.length()-2);
+			}
+		}
+		customer.setOperator(user.getUserId());
+		// 检验客户信息和客户车辆信息 客户和客户车辆
+		cusSvc.saveCustomer(customer);
+		ResponseMsgUtil.operSuccessFullClose(response, "保存成功");
+	}
+
+	/**
+	 * 浏览客户信息窗口
+	 * 
+	 * @param quertName
+	 *            查询姓名
+	 * @param queryTel
+	 *            查询电话
+	 * @param CarNO
+	 *            车牌号
+	 * */
+	@RequestMapping("/apporder/customerlookup.do")
+	public String customerLook(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Pager pager,
+			String querytName, String queryTel, String CarNO) {
+		pager = customerSvc.getLookupPager(pager, querytName, queryTel, CarNO);
+		if (StringUtils.isNotEmpty(querytName)) {
+			model.addAttribute("querytName", querytName);
+		}
+		if (StringUtils.isNotEmpty(queryTel)) {
+			model.addAttribute("queryTel", queryTel);
+		}
+		if (StringUtils.isNotEmpty(CarNO)) {
+			model.addAttribute("CarNO", CarNO);
+		}
+		model.addAttribute("pager", pager);
+		return "apporder/customer/lookup";
+	}
+
+	/**
+	 * 描述：添加客户信息
+	 * */
+	@RequestMapping("/apporder/addcustomer.do")
+	public String addCustomer(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("dialogId") String dialogId) {
+		if (StringUtils.isNotEmpty(dialogId)) {
+			model.addAttribute("dialogId", dialogId);
+		} else
+			model.addAttribute("dialogId", "orderaddcustomer");
+		return "apporder/customer/add";
+	}
+
+	/**
+	 * 描述：客户信息保存
+	 * */
+	@RequestMapping("/apporder/customersave.do")
+	public void saveCustomer(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, InfoCustome customer,
+			@RequestParam("dialogId") String dialogId) {
+		customer.setDel(false);
+		customerSvc.save(customer);
+		JSONObject json = new JSONObject();
+		json.put("forwardUrl", request.getContextPath()
+				+ "/apporder/customerlookup.do?dialogId=appordercustomer");
+		json.put("statusCode", "200");
+		json.put("message", "操作成功");
+		json.put("dialogId", "appordercustomer");
+		json.put("callbackType", "closeCurrent");
+		ResponseUtils.renderJson(response, json.toJSONString());
+	}
+
+	/**
+	 * 描述：选择车辆
+	 * */
+	@RequestMapping("/apporder/carlookup.do")
+	public String carLookup(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Pager pager,
+			String carNO, Integer customerId, String customerName) {
+		pager = infCarSvc.getLookPager(pager, carNO, customerId, customerName);
+		// pager = carCustomerSvc.getCarLookPager(pager, carNO, customerId);
+		if (StringUtils.isNotEmpty(carNO)) {
+			model.addAttribute("carNO", carNO);
+		}
+		if (customerId != null) {
+			InfoCustome custome = customerSvc.get(customerId);
+			if (customerName == null) {
+				customerName = custome.getCustomerName();
+			}
+		}
+		model.addAttribute("customerName", customerName);
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("pager", pager);
+		return "apporder/car/lookup";
+	}
+
+	/**
+	 * 描述:添加车辆信息
+	 * */
+	@RequestMapping("/apporder/addcar.do")
+	public String carAdd(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("dialogId") String dialogId,
+			@RequestParam("customerId") Integer customerId) {
+
+		model.addAttribute("dialogId", dialogId);
+		// 查询单位配置
+		String[] prom = { "del", "paramType" };
+		Object[] objetm = { false, 6 };// 6表示排量
+		List<ParamConfig> paramConfigList = configSvc.getList(prom, objetm);
+		model.addAttribute("paramConfigList", paramConfigList);
+		model.addAttribute("customerId", customerId);
+		return "apporder/car/add";
+	}
+
+	@RequestMapping("/apporder/carInfosave.do")
+	public void saveCar(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("dialogId") String dialogId, InfoCar infoCar,
+			@RequestParam Integer customerId,
+			@RequestParam("infoBrand.name") String brandName) {
+
+		if (customerId == null) {
+			ResponseMsgUtil.operFaildClose(response, "请选择客户信息");
+			return;
+		}
+		InfoCustome customer = customerSvc.get(customerId);
+		Integer carId = infCarSvc.saveCarInf(infoCar, brandName);
+		CarCustmerMapping carCusMap = new CarCustmerMapping();
+		carCusMap.setInfoCar(infCarSvc.get(carId));
+		carCusMap.setInfoCustome(customer);
+		carCustomerSvc.save(carCusMap);
+		ResponseMsgUtil.operSuccessFull(response, "保存成功");
+	}
+
+	/**
+	 * 描述：选择店铺lookup
+	 * */
+	@RequestMapping("/apporder/shopLookup.do")
+	public String shopLookup(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Pager pager,
+			String queryDeptName, String queryUpDeptName) {
+		model.addAttribute("queryDeptName", queryDeptName);
+		model.addAttribute("queryUpDeptName", queryUpDeptName);
+		pager = infoDeptSvc.getLookupPager(pager, queryDeptName,
+				queryUpDeptName);
+		model.addAttribute("pager", pager);
+		return "/infodept/lookup";
+	}
+
+	/**
+	 * 描述：查看
+	 * */
+	@RequestMapping("/app/orderscan.do")
+	public String customerScan(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("cusappoitId") Integer cusappoitId) {
+		setCustomerEntity(model, cusappoitId);
+		return "/apporder/view";
+	}
+
+	/**
+	 * 描述：删除
+	 * */
+	@RequestMapping("/app/orderdelete.do")
+	public void deleteCustomer(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("cusappoitId") Integer cusappoitId) {
+		cusSvc.deleteCustomerById(cusappoitId);
+		ResponseMsgUtil.operSuccessFull(response, "删除成功");
+	}
+
+	/**
+	 * 描述：修改
+	 * */
+	@RequestMapping("/app/orderedit.do")
+	public String customerEdit(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("cusappoitId") Integer cusappoitId) {
+		setCustomerEntity(model, cusappoitId);
+		return "/apporder/edit";
+
+	}
+
+	/**
+	 * 更新
+	 * */
+	@RequestMapping("app/orderupdate.do")
+	public void customerUpdate(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			CustomerAppoit customer) {
+		// 持久对象
+		cusSvc.editCustomer(customer);
+		ResponseMsgUtil.operSuccessFullClose(response, "修改成功");
+	}
+	
+	/**
+	 * 立即指派
+	 * */
+	@RequestMapping("/app/Assign.do")
+	public String assignOrder(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("cusappoitId") Integer cusappoitId){
+		setCustomerEntity(model, cusappoitId);
+		return "/apporder/assign";
+	}
+	
+	@RequestMapping("/app/assignsave.do")
+	public void assginOrderSave(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			CustomerAppoit customer){
+		CustomerAppoit cuEntity = cusSvc.get(customer.getCusappoitId());
+		cuEntity.setEmpId(customer.getEmpId());
+		cuEntity.setCus(1);
+		cusSvc.update(cuEntity);
+		ResponseMsgUtil.operSuccessFullClose(response, "指派成功");
+	}
+	/**
+	 * 描述:取消
+	 * */
+	@RequestMapping("/app/orderdcancle.do")
+	public void orderCancle(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("cusappoitId") Integer cusappoitId){
+		CustomerAppoit entity = cusSvc.get(cusappoitId);
+		entity.setCus(4);
+		cusSvc.save(entity);
+		ResponseMsgUtil.operSuccessFull(response, "订单取消成功");
+	}
+	
+	private void setCustomerEntity(ModelMap model, Integer cusappoitId) {
+		CustomerAppoit customerApp = cusSvc.get(cusappoitId);
+		Integer empId = customerApp.getEmpId();
+		if(empId != null){
+			InfoDept dept = infoDeptSvc.get(empId);
+			customerApp.setInfoDept(dept);
+		}
+		List<Servicetype> serviceItem = typeSvc.getAll();
+		model.addAttribute("serviceItem",serviceItem);
+		model.addAttribute("customerApp", customerApp);
+		SysUser user = userDao.get(customerApp.getOperator());
+		model.addAttribute("user", user);
+	}
+
+}

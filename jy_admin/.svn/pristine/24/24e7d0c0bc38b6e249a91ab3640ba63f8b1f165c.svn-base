@@ -1,0 +1,185 @@
+package com.zoomoor.jy.dao.impl;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+import org.hibernate.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.stereotype.Repository;
+
+import com.zoomoor.common.base.bean.Finder;
+import com.zoomoor.common.base.bean.Pager;
+import com.zoomoor.common.base.dao.impl.BaseDaoImpl;
+import com.zoomoor.jy.dao.InfoGoodsDao;
+import com.zoomoor.jy.entity.InfoGoods;
+import com.zoomoor.jy.entity.vo.CusEntrustGoodsVo;
+import com.zoomoor.jy.util.MathUtil;
+@Repository
+public class InfoGoodsDaoImpl extends BaseDaoImpl<InfoGoods, Integer> implements
+		InfoGoodsDao {
+
+	private static final Logger log = LoggerFactory
+			.getLogger(InfoGoodsDaoImpl.class);
+	
+	@Override
+	public Pager getPage(String queryGoodsCode, String queryName,Integer brandId, int pageNo,
+			int pageSize) {
+		Finder f = Finder.create("from InfoGoods bean where 1=1 and bean.del=0 ");
+		if(StringUtils.isNotEmpty(queryGoodsCode)){
+			f.append(" and  bean.goodsCode like:queryGoodsCode");
+			f.setParam("queryGoodsCode","%"+queryGoodsCode+"%" );
+		}
+		if(StringUtils.isNotEmpty(queryName)){
+			f.append(" and  bean.name like:queryName");
+			f.setParam("queryName","%"+queryName+"%" );
+		}
+		if(brandId!=null&&brandId>0){
+			f.append(" and  bean.infoBrand.id=:brandId");
+			f.setParam("brandId",brandId);
+		}
+		f.append(" order by bean.goodsId desc");
+		return find(f, pageNo, pageSize);
+	}
+
+	/**
+	* 描述：该方法作用
+	* @author zhangZhenxing
+	* @Date 2015年7月21日
+	*/
+	@Override
+	public Pager getLookupPage(Pager pager, String queryGoodsCode,
+			String queryName, String brandName,String goodIDS,Integer goodsType,Integer brandId) {
+		Finder f = Finder.create("from InfoGoods bean where 1=1 and bean.del=0 ");
+		if(StringUtils.isNotEmpty(queryGoodsCode)){
+			f.append(" and  bean.goodsCode like :queryGoodsCode");
+			f.setParam("queryGoodsCode","%"+queryGoodsCode+"%" );
+		}
+		if(StringUtils.isNotEmpty(queryName)){
+			f.append(" and  bean.name like :queryName");
+			f.setParam("queryName","%"+queryName+"%" );
+		}
+		if(StringUtils.isNotEmpty(brandName)){
+			f.append(" and  bean.infoBrand.name like :brandName");
+			f.setParam("brandName","%"+brandName+"%" );
+		}
+		if(goodsType!=null){
+			f.append(" and  bean.infoGoodsType.groupId = :goodsType");
+			f.setParam("goodsType", goodsType);
+		}
+		if(StringUtils.isNotEmpty(goodIDS)){
+			if(goodIDS.contains(",")){
+				StringBuffer appSql = new StringBuffer("and bean.goodsId not in ( ");
+				String[] ids = goodIDS.split(",");
+				for(String goodId:ids){
+					appSql.append( goodId + ",");
+				}
+				appSql.append(" -1 )");
+				f.append(appSql.toString());
+			}else{
+				f.append(" and bean.goodsId !=" + Integer.parseInt(goodIDS));
+			}
+		}
+		if(brandId != null){
+			f.append(" AND bean.infoBrand.id =:brandId");
+			f.setParam("brandId", brandId);
+		}
+		f.append(" order by bean.goodsId desc");
+		return find(f, pager.getPageNum(), pager.getNumPerPage());
+	}
+
+	/**
+	* 描述：该方法作用
+	* @author zhangZhenxing
+	* @Date 2015年8月16日
+	*/
+	@Override
+	public List<CusEntrustGoodsVo> getGoodsByEntrust(Integer entrustId) {
+		Connection conn = null;
+		List list = null;
+		try{
+			conn = (Connection) SessionFactoryUtils.getDataSource(
+					sessionFactory).getConnection();
+			if(entrustId != null){
+				CallableStatement call = (CallableStatement) conn
+						.prepareCall("{CALL u_GetDepotBillListByCEId(?)}");
+				call.setInt(1, entrustId);
+				ResultSet rs = call.executeQuery();
+				list = new ArrayList<CusEntrustGoodsVo>();
+				while(rs.next()){
+					CusEntrustGoodsVo vo = new CusEntrustGoodsVo();
+					vo.setGoodNO(rs.getString("goods_code"));
+					vo.setGoodName(rs.getString("goods_name"));
+					vo.setPrice(rs.getDouble("price"));
+					vo.setNum(rs.getDouble("num"));
+					vo.setUnit(rs.getString("unit"));
+					vo.setGoodBrand(rs.getString("goods_brand"));
+					vo.setStandard(rs.getString("standard"));
+					vo.setSumPrice(MathUtil.toFixed(vo.getNum()*vo.getPrice(), 2));
+					list.add(vo);
+				}
+				
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+			log.error("结算单getGoodsByEntrust entrustId=" + entrustId+"物料列表出错");
+		}finally{
+			if(conn!=null){
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return list;
+	}
+
+	/**
+	* 描述：该方法作用
+	* @author zhangZhenxing
+	* @Date 2015年8月17日
+	*/
+	@Override
+	public Double getGoodsPriceCount(Integer entrustId) {
+		String sql = "SELECT SUM(g.price*g.discount*l.num) as sunprice "
+				+ " FROM customer_entrust ce "
+				+ " INNER JOIN depot_bill_list l ON l.del=0 AND ce.entrust_id=l.tag_id"
+				+ " INNER JOIN depot_bill b ON b.del=0 AND l.bill_id=b.bill_id AND b.summary_id IN(5,6) "
+				+ " INNER JOIN depot_come c ON c.del=0 AND l.come_id=c.id"
+				+ " INNER JOIN info_goods g ON g.del=0 AND l.goods_id=g.goods_id"
+				+ " INNER JOIN info_goods_type gg ON gg.del=0 AND g.group_id=gg.group_id"
+				+ " INNER JOIN param_config AS k ON k.del=0 AND k.param_type=1 AND c.unit_id=k.unit_id"
+				+ " WHERE ce.del=0 AND entrust_id=" + entrustId;
+		Query query = this.getSession().createSQLQuery(sql);
+		Double count = 0.0d;
+		if(query.list()!=null && query.list().size()>0){
+			Object rs = query.list().get(0);
+			count = rs==null?0.0d:Double.parseDouble(rs.toString());
+		}
+		return count;
+	}
+
+	/**
+	* 描述：该方法作用
+	* @author zhangZhenxing
+	* @Date 2015年8月19日
+	*/
+	@Override
+	public List<InfoGoods> getGoodsBtItemIDs(String itemIDs) {
+		Finder finder = Finder.create("FROM InfoGoods bean WHERE 1=1 AND bean.del=0 ");
+		finder.append(" AND bean goodsId in (");
+		//根据服务IDS查询配件ID
+		finder.append(" SELECT map.infoGoods.goodsId FROM SitemgoodsMapping map"
+				+ " where 1=1 and map.del=0 and map.serviceitem.itemId in (" + itemIDs + ") )");
+		return find(finder);
+	}
+
+}

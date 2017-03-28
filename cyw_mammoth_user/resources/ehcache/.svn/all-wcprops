@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/Mammoth/!svn/ver/2711/develop/trunk/cyw_mammoth_user/resources/ehcache
+END
+ehcache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Mammoth/!svn/ver/1619/develop/trunk/cyw_mammoth_user/resources/ehcache/ehcache.xml
+END
+applicationContext-ehcache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/Mammoth/!svn/ver/1619/develop/trunk/cyw_mammoth_user/resources/ehcache/applicationContext-ehcache.xml
+END
+ehcache-hibernate-local.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/1619/develop/trunk/cyw_mammoth_user/resources/ehcache/ehcache-hibernate-local.xml
+END
+ehcache-shiro.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mammoth/!svn/ver/2711/develop/trunk/cyw_mammoth_user/resources/ehcache/ehcache-shiro.xml
+END
+ehcache-cache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Mammoth/!svn/ver/1619/develop/trunk/cyw_mammoth_user/resources/ehcache/ehcache-cache.xml
+END

@@ -1,0 +1,110 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../include/taglib.jsp" %>
+<div class="pageContent">
+	<form method="post" action="${pageContext.request.contextPath}/infogoods/save.do" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<div class="pageFormContent" layoutH="60">
+			<div class="unit">
+				<label>配件编号：</label>
+				<input type="text" name="goodsCode" class="required" maxlength="50" size="30" remote="${pageContext.request.contextPath}/infogoods/check.ajax" />
+			</div>
+			<div class="unit">
+				<label>配件名称：</label>
+				<input type="text" name="name" class="required" maxlength="50" size="30"/>
+			</div>
+			<div class="unit">
+				<label>适用品牌车系：</label>
+				<input name="infoBrand.id" type="hidden" value="">
+				<input class="required" name="infoBrand.name" type="text" size="30" readonly="readonly" />
+				<span style="position: absolute"><a title="选择品牌车系"  class="btnLook" id="brandlook"  href="${pageContext.request.contextPath}/lookup/brand.do" rel="look_brand" width="600" height="550" lookupGroup="infoBrand">品牌车系</a></span>
+						
+			</div>
+			<div class="unit">
+				<label>配件类别：</label>
+				<input name="infoGoodsType.groupId" type="hidden" value="">
+				<input class="required" name="infoGoodsType.typeName" type="text" size="30" readonly="readonly" />
+				<span style="position: absolute"><a title="选择配件类别" class="btnLook" id="goodslook"  href="${pageContext.request.contextPath}/lookup/goodsType.do" rel="look_gt" width="600" height="550" lookupGroup="infoGoodsType">配件类别</a></span>
+				
+			</div>
+			<div class="unit">
+				<label>最小计量单位：</label>
+				<select name="paramConfig.unitId">
+					<c:forEach items="${paramConfigList }" var="paramconfig">
+					<option value="${paramconfig.unitId }">${paramconfig.name }</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="unit">
+				<label>规格：</label>
+				<input type="text" name="standard" class="required" maxlength="10" size="30"  />
+			</div>
+			<div class="unit">
+				<label>配件品牌：</label>
+				<input type="text" name="goodsBrand" class="" maxlength="30" size="30"  />
+			</div>
+			<div class="unit">
+				<label>货号：</label>
+				<input type="text" name="artNo" class="" maxlength="10" size="30"  />
+			</div>
+			<div class="unit">
+				<label>包装单位：</label>
+				<input type="text" name="packUnit" class="" maxlength="10" size="30"  />
+			</div>
+			<div class="unit">
+				<label>包装规格：</label>
+				<input type="text" name="packSpec" class="" maxlength="10" size="30"  />
+			</div>
+			<div class="unit">
+				<label>销售单价：</label>
+				<input type="text" name="price" class="" maxlength="30" size="30"  />
+			</div>
+			<div class="unit">
+				<label>批发售价：</label>
+				<input type="text" name="wholesalePrice" class="" maxlength="20" size="30"  />
+			</div>
+			<div class="unit">
+				<label>索赔价：</label>
+				<input type="text" name="claimPrice" class="" maxlength="20" size="30"  />
+			</div>
+			<div class="unit">
+				<label>建议零售价：</label>
+				<input type="text" name="advisePrice" class="required number" maxlength="30" size="30"  />
+			</div>
+			<div class="unit">
+				<label>保险价：</label>
+				<input type="text" name="insurancePrice" class="" maxlength="20" size="30"  />
+			</div>
+			<div class="unit">
+				<label>会员价：</label>
+				<input type="text" name="memberPrice" class="" maxlength="20" size="30"  />
+			</div>
+			<div class="unit">
+				<label>折扣：</label>
+				<input type="text" onKeyUp="clearNoNum(event,this)" onBlur="checkNum(this)" name="discount"  value="1"  maxlength="4" size="30"  />
+			</div>
+			<div class="unit">
+				<label>积分：</label>
+				<input type="text" name="intergral" value="0" class="digits" maxlength="20" size="30"  />
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<tag:auth code="infogoods.save">
+					<li>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div>
+					</li>
+				</tag:auth>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<script>
+	function openBrandLookUp(){
+		$("#brandlook").click();
+	}
+		function openGoodsLookUp(){
+		$("#goodslook").click();
+	}
+</script>

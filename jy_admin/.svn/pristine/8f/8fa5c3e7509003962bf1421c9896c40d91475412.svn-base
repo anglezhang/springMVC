@@ -1,0 +1,266 @@
+package com.zoomoor.jy.action;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.zoomoor.common.base.bean.Pager;
+import com.zoomoor.common.web.ResponseUtils;
+import com.zoomoor.jy.entity.InfoBrand;
+import com.zoomoor.jy.entity.InfoGoodsType;
+import com.zoomoor.jy.entity.Serviceitem;
+import com.zoomoor.jy.entity.Servicetype;
+import com.zoomoor.jy.entity.SitemgoodsMapping;
+import com.zoomoor.jy.service.InfoBrandSvc;
+import com.zoomoor.jy.service.InfoGoodsSvc;
+import com.zoomoor.jy.service.InfoGoodsTypeSvc;
+import com.zoomoor.jy.service.ServiceitemScv;
+import com.zoomoor.jy.service.ServicetypeSvc;
+import com.zoomoor.jy.util.ResponseMsgUtil;
+
+/**
+ * 描述：ServiceAct服务管理控制器
+ * 
+ * @author Zhangzhenxing
+ * @Date 2015年7月20日 上午9:29:26
+ * @version 1.0
+ */
+@Controller
+public class ServiceAct {
+	// 日志输入
+	private static final Logger log = LoggerFactory.getLogger(ServiceAct.class);
+
+	@Autowired
+	private ServiceitemScv serSvc;
+
+	@Autowired
+	private ServicetypeSvc typeScv;
+
+	/**
+	 * 货物管理
+	 * */
+	@Autowired
+	private InfoGoodsSvc goodsSvc;
+
+	/**
+	 * 货物类型
+	 * */
+	@Autowired
+	private InfoGoodsTypeSvc goodsTypeSvc;
+
+	/**
+	 * 品牌
+	 * */
+	@Autowired
+	private InfoBrandSvc brandSvc;
+
+	/**
+	 * 服务项目列表
+	 * */
+	@RequestMapping("/service/list.do")
+	public String list(HttpServletRequest request,
+			HttpServletResponse response, Pager pager, ModelMap model,
+			String queryItemCode, String queryItemName, String queryPinyin,
+			Integer queryAppType, InfoBrand infoBrand) {
+		log.info("service/list.do queryItemCode = " + queryItemCode
+				+ " itemName = " + queryItemName);
+		pager = serSvc.getList(pager, queryItemCode, queryItemName,queryPinyin,
+				queryAppType, infoBrand);
+		List<Servicetype> types = typeScv.getAll();
+		model.addAttribute("types", types);
+		model.addAttribute("pager", pager);
+		if (StringUtils.isNotEmpty(queryItemCode)) {
+			model.addAttribute("queryItemCode", queryItemCode);
+		}
+		if (StringUtils.isNotEmpty(queryItemName)) {
+			model.addAttribute("queryItemName", queryItemName);
+		}
+		model.addAttribute("queryAppType", queryAppType);
+		model.addAttribute("infoBrand", infoBrand);
+		model.addAttribute("queryPinyin", queryPinyin);
+		return "service/list";
+	}
+
+	/**
+	 * 描述：获取服务类型列表
+	 * */
+	@RequestMapping("/service/servicelookup.do")
+	public String serviceTypeLookup(Pager pager, ModelMap model,
+			String queryTypeName) {
+		log.info("/service/lookup.do queryTypeName = " + queryTypeName);
+		pager = typeScv.getPager(pager, queryTypeName);
+		model.addAttribute("pager", pager);
+		if (StringUtils.isNotEmpty(queryTypeName)) {
+			model.addAttribute("queryTypeName", queryTypeName);
+		}
+
+		return "service/lookup";
+	}
+
+	/**
+	 * 描述：添加服务项
+	 * */
+	@RequestMapping("/service/add.do")
+	public String add(HttpServletRequest request, HttpServletResponse response,
+			ModelMap model) {
+		return "service/add";
+	}
+
+	/**
+	 * 描述：添加服务类型项目
+	 * */
+	@RequestMapping("/service/servicetypeadd.do")
+	public String addType(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("dialogId") String dialogId) {
+		if (StringUtils.isNotEmpty(dialogId)) {
+			model.addAttribute("dialogId", "servicetypeadd");
+		} else
+			model.addAttribute("dialogId", dialogId);
+		return "service/type/add";
+	}
+
+	/**
+	 * 描述：保存服务项目
+	 * */
+	@RequestMapping("service/servicetypesave.do")
+	public void typeSave(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			@RequestParam("dialogId") String dialogId, Servicetype servicetype) {
+		if (StringUtils.isNotEmpty(dialogId)) {
+			dialogId = "servicetypeadd";
+			model.addAttribute("dialogId", dialogId);
+		} else
+			model.addAttribute("dialogId", dialogId);
+		servicetype.setDel(false);
+		typeScv.save(servicetype);
+		// 返回
+		JSONObject json = new JSONObject();
+		json.put("forwardUrl", request.getContextPath()
+				+ "service/servicelookup.do?dialogId=servicetype");
+		json.put("statusCode", "200");
+		json.put("message", "操作成功");
+		json.put("dialogId", dialogId);
+		ResponseUtils.renderJson(response, json.toJSONString());
+	}
+
+	/**
+	 * 描述：保存服务
+	 * */
+	@RequestMapping("/service/save.do")
+	public void save(HttpServletRequest request, HttpServletResponse response,
+			ModelMap model, Serviceitem serviceitem,
+			@RequestParam("servicetypeId") Integer servicetypeId) {
+		// 保存服务类
+		InfoBrand infoBrand = brandSvc.get(serviceitem.getInfoBrand().getId());
+		serviceitem.setBrandname(serviceitem.getInfoBrand().getName());
+		serviceitem.setInfoBrand(infoBrand);
+		Servicetype entity = typeScv.get(servicetypeId);
+		serviceitem.setServicetype(entity);
+		serviceitem.setDel(false);
+		Integer serviceId = serSvc.save(serviceitem);
+
+		// 保存服务与配件关系
+		serSvc.saveGoodsMapp(serviceId, serviceitem);
+		JSONObject json = new JSONObject();
+		json.put("statusCode", "200");
+		json.put("callbackType", "closeCurrent");
+		json.put("message", "操作成功");
+		ResponseUtils.renderJson(response, json.toJSONString());
+	}
+
+	/**
+	 * 描述：选择服务相关货物
+	 * */
+	@RequestMapping("/service/servicegoodslookup.do")
+	public String goodsLookup(Pager pager, ModelMap model,
+			String queryGoodsCode, String queryName, String queryBand,
+			String goodIDS, Integer goodsType, Integer brandId) {
+		pager = goodsSvc.getLookupPage(pager, queryGoodsCode, queryName,
+				queryBand, goodIDS, goodsType, brandId);
+		if (StringUtils.isNotEmpty(queryGoodsCode)) {
+			model.addAttribute("queryGoodsCode", queryGoodsCode);
+		}
+		if (StringUtils.isNotEmpty(queryName)) {
+			model.addAttribute("queryName", queryName);
+		}
+		if (StringUtils.isNotEmpty(queryBand)) {
+			model.addAttribute("queryBand", queryBand);
+		}
+		model.addAttribute("goodsType", goodsType);
+		List<InfoGoodsType> types = goodsTypeSvc.getAll();
+		model.addAttribute("types", types);
+		model.addAttribute("goodIDS", goodIDS);
+		model.addAttribute("pager", pager);
+		model.addAttribute("brandId", brandId);
+		return "goods/lookup";
+	}
+
+	/**
+	 * 删除服务项目
+	 * */
+	@RequestMapping("/service/detete.do")
+	public void delete(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Integer itemId) {
+		serSvc.deletById(itemId);
+		ResponseMsgUtil.operSuccessFull(response, "操作成功");
+	}
+
+	/**
+	 * 查看服务详情
+	 * */
+	@RequestMapping("/service/view.do")
+	public String scan(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Integer itemId) {
+		Serviceitem serviceitem = serSvc.get(itemId);
+		model.addAttribute("serviceitem", serviceitem);
+		return "/service/view";
+	}
+
+	/**
+	 * 修改服务项目
+	 * */
+	@RequestMapping("/service/edit.do")
+	public String eidt(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model, Integer itemId) {
+		Serviceitem serviceitem = serSvc.get(itemId);
+		model.addAttribute("serviceitem", serviceitem);
+		return "/service/edit";
+	}
+
+	/**
+	 * 服务项目更新
+	 * */
+	@RequestMapping("/service/update.do")
+	public void update(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model,
+			Serviceitem serviceitem,
+			@RequestParam("servicetypeId") Integer servicetypeId) {
+		serSvc.updateService(serviceitem);
+		// 持久对象
+		Serviceitem target = serSvc.get(serviceitem.getItemId());
+		// 清除之前关联
+		serSvc.deleteByService(target);
+		// 保存服务与配件关系
+		serSvc.saveGoodsMapp(serviceitem.getItemId(), serviceitem);
+
+		JSONObject json = new JSONObject();
+		json.put("statusCode", "200");
+		json.put("callbackType", "closeCurrent");
+		json.put("message", "操作成功");
+		ResponseUtils.renderJson(response, json.toJSONString());
+	}
+
+}

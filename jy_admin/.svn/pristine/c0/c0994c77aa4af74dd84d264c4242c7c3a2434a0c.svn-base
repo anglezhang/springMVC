@@ -1,0 +1,193 @@
+package com.zoomoor.jy.service.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zoomoor.common.base.bean.Pager;
+import com.zoomoor.common.base.service.impl.BaseSvcImpl;
+import com.zoomoor.jy.dao.InfoBrandDao;
+import com.zoomoor.jy.dao.InfoCarDao;
+import com.zoomoor.jy.dao.InfoGoodsDao;
+import com.zoomoor.jy.dao.ServiceitemDao;
+import com.zoomoor.jy.dao.ServicetypeDao;
+import com.zoomoor.jy.dao.SitemgoodsMappingDao;
+import com.zoomoor.jy.entity.InfoBrand;
+import com.zoomoor.jy.entity.InfoCar;
+import com.zoomoor.jy.entity.InfoGoods;
+import com.zoomoor.jy.entity.Serviceitem;
+import com.zoomoor.jy.entity.Servicetype;
+import com.zoomoor.jy.entity.SitemgoodsMapping;
+import com.zoomoor.jy.service.ServiceitemScv;
+
+/**
+ * 描述：ServiceitemScvImpl.java
+ * 
+ * @author Zhangzhenxing
+ * @Date 2015年7月20日 上午9:47:41
+ * @version 1.0
+ */
+@Service
+public class ServiceitemScvImpl extends BaseSvcImpl<Serviceitem, Integer>
+		implements ServiceitemScv {
+
+	@Resource
+	private ServiceitemDao dao;
+
+	@Resource
+	private SitemgoodsMappingDao siteMapDao;
+
+	@Resource
+	private InfoGoodsDao goodsDao;
+
+	@Resource
+	private InfoBrandDao brandDao;
+
+	@Resource
+	private InfoCarDao carDao;
+
+	@Autowired
+	public void setBaseDao(ServiceitemDao dao) {
+		super.setBaseDao(dao);
+	}
+
+	/**
+	 * 描述：该方法作用
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年7月20日
+	 */
+	@Override
+	public Pager getList(Pager pager, String queryItemCode,
+			String queryItemName, Integer queryAppType, InfoBrand infoBrand) {
+		return dao.getPager(pager, queryItemCode, queryItemName, queryAppType,
+				infoBrand);
+	}
+
+	/**
+	 * 描述：该方法作用
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年7月21日
+	 */
+	@Override
+	public void saveGoodsMapp(Integer serviceId, Serviceitem serviceItem) {
+
+		Serviceitem entity = dao.get(serviceId);
+		SitemgoodsMapping[] siteGoodMap = serviceItem.getSiteGoodMap();
+		if (siteGoodMap != null) {
+			// 循环新增
+			for (SitemgoodsMapping sitMap : siteGoodMap) {
+				if (sitMap.getInfoGoods() != null) {
+					sitMap.setServiceitem(entity);
+					Integer goodsId = sitMap.getInfoGoods().getGoodsId();
+					InfoGoods goods = goodsDao.get(goodsId);
+					sitMap.setInfoGoods(goods);
+					sitMap.setDel(false);
+					siteMapDao.save(sitMap);
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * 描述：该方法作用
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年7月21日
+	 */
+	@Override
+	public void deletById(Integer itemId) {
+		Serviceitem entity = dao.get(itemId);
+		entity.setDel(true);
+		dao.update(entity);
+	}
+
+	/**
+	 * 描述：该方法作用
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年7月22日
+	 */
+	@Override
+	public void deleteByService(Serviceitem entity) {
+		// 先删除该服务项目下配件关系
+		siteMapDao.deleteByServiceitem(entity);
+
+	}
+
+	/**
+	 * 描述：该方法作用
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年8月3日
+	 */
+	@Override
+	public Pager buildList(Pager pager, String queryItemCode,
+			String queryItemName, String itemIdS, Integer carId) {
+		InfoCar car = null;
+		Integer brandId = null;
+		if (carId != -1) {
+			car = carDao.get(carId);
+			brandId = car.getInfoBrand().getId();
+		}
+
+		return dao.listPager(pager, queryItemCode, queryItemName, itemIdS,
+				brandId);
+	}
+
+	/**
+	 * 描述：该方法作用
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年8月17日
+	 */
+	@Override
+	public boolean updateService(Serviceitem service) {
+		Serviceitem entity = dao.get(service.getItemId());
+		// 名称
+		InfoBrand infoBrand = brandDao.get(service.getInfoBrand().getId());
+
+		entity.setInfoBrand(infoBrand);
+		entity.setBrandname(service.getInfoBrand().getName());
+		// 项目编码
+		entity.setItemcode(service.getItemcode());
+		// 项目名称
+		entity.setItemname(service.getItemname());
+		// 工时费
+		entity.setWorkhourmoney(service.getWorkhourmoney());
+		// 折扣系数
+		entity.setDiscount(service.getDiscount());
+		// 积分
+		entity.setIntergral(service.getIntergral());
+		dao.update(entity);
+		return true;
+	}
+
+	/**
+	 * 描述:返回list数据
+	 * 
+	 * @author zhangZhenxing
+	 * @Date 2015年8月18日
+	 */
+	@Override
+	public List getServiceItem(String queryItemCode, String queryItemName,
+			String itemIdS, Integer carId) {
+		if (queryItemCode == null) {
+			queryItemCode = "";
+		}
+		if (queryItemName == null) {
+			queryItemName = "";
+		}
+		// 非空判断
+		if (itemIdS == null) {
+			itemIdS = "0";
+		}
+		return dao.getLooklist(carId, queryItemCode, queryItemName, itemIdS);
+	}
+
+}

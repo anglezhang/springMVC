@@ -1,0 +1,96 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../include/taglib.jsp" %>
+<form id="pagerForm" method="post" action="${pageContext.request.contextPath}/allocation/list.do">
+	<input type="hidden" name="pageNum" value="${pager.pageNum}" />
+	<input type="hidden" name="numPerPage" value="${pager.numPerPage}" />
+	<input type="hidden" name="queryAllocationNo" value="${queryAllocationNo}" />
+	<input type="hidden" name="queryEmpName" value="${queryEmpName}" />
+	<input type="hidden" name="queryDeptId" value="${queryDeptId}" />
+	<input type="hidden" name="queryStartDate" value="${queryStartDate}" />
+	<input type="hidden" name="queryEndDate" value="${queryEndDate}" />
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath}/allocation/list.do" method="post">
+		<input name="iszb" value="${iszb }" type="hidden"/>
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						调拨单号：<input type="text" name="queryAllocationNo" value="${queryAllocationNo}"/>
+					</td>
+					<td>
+						店铺名称：
+						<c:if test="${iszb!=0 }">
+						<select name="queryDeptId" id="queryDeptId">
+							<option value="">所有店铺</option>
+							<c:forEach items="${deptList }" var="dept">
+									<option value="${dept.deptId }" <c:if test="${queryDeptId==dept.deptId }">selected</c:if>>${dept.name }</option>
+							</c:forEach>
+						</select>
+						</c:if>
+						<c:if test="${iszb==0 }">
+						<select name="queryDeptId" id="queryDeptId">
+							<c:forEach items="${deptList }" var="dept">
+									<c:if test="${queryDeptId==dept.deptId }">
+									<option value="${dept.deptId }" >${dept.name }</option>
+									</c:if>
+							</c:forEach>
+						</select>
+						</c:if>
+					</td>
+					<td>
+						创建时间：<input type="text" class="date" name="queryStartDate" value="${queryStartDate}"/>-<input type="text" class="date"  name="queryEndDate" value="${queryEndDate}"/>
+					</td>
+					<td>
+						操作员：<input type="text" name="queryEmpName" value="${queryEmpName}"/>
+					</td>
+					<td>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<tag:auth code="allocation.add">
+				<li><a class="add" href="${pageContext.request.contextPath}/allocation/add.do" target="dialog"  width="1500" height="700" mask="true" rel="dh_zl_dept_view"><span>创建调拨</span></a></li>
+			</tag:auth>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="112">
+		<thead>
+			<tr align="center">
+				<th>调拨单号</th>
+				<th>店铺名称</th>
+				<th>创建时间</th>
+				<th>操作员</th>
+				<th>备注</th>
+				<th>操作选项</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${pager.list}" var="allocation" varStatus="s">
+					<tr align="center">
+						<td>${allocation.allocationNo}</td>
+						<td>${allocation.deptName}</td>
+						<td>${fn:substring(allocation.swDate,0,19)}</td>
+						<td>${allocation.empName}</td>
+						<td>${allocation.memo }</td>
+						<td>
+							<tag:auth code="allocation.view">
+								 <a title="查看详细" target="dialog" width="1300" height="600" mask="true" rel="order_edit" href="${pageContext.request.contextPath}/allocation/view.do?id=${allocation.id}" class="btn btn-ck"></a>
+							</tag:auth>
+							<tag:auth code="allocation.print">
+								 <a title="打印" target="view_window" rel="allocation_print" href="${pageContext.request.contextPath}/allocation/print/${allocation.allocationNo}" class="btn btn-tj"></a>
+							</tag:auth>
+							
+						</td>
+					</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	<%@ include file="../include/page.jsp" %>
+</div>

@@ -1,0 +1,25 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<!--特征ALERT-->
+<div id="roomCharaterAlert" class="alertDiv2 moveBar2 alertDiv featuresButton moveBar roomDefinition" style="z-index:22">
+	<div class="alertMain" style="width:500px;">
+		<h4 class="moveDivAlert"> 房间特征筛选<a href="javascript:closeDiv('roomCharaterAlert');" class="closeDiv"></a></h4>
+		<div class="borderSolid">
+			<div class="roomButtonFblock" id="whitBlock" style="overflow-y:auto;height: 200px;"></div>
+			<table width="460">
+				<tr>
+					<td><label> 
+						<input class="checkbox" id="chkall" name="chkall" type="checkbox"> 
+						<span class="margin-left-10">全选</span> 
+					</label></td>
+				</tr>
+				<tr>
+					<td align="right">
+						<a href="javascript:closeDiv('roomCharaterAlert');" class="button_03 floatR margin-left-10">取消(N)</a> 
+						<a href="javascript:;" class="button_03 floatR" id="saveCharaters">确定(Y)</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!--/特征-->

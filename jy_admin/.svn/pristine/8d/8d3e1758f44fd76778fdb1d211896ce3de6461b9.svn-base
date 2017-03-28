@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
+	default-lazy-init="true">
+
+	<!-- 自动扫描的包名 -->
+	<!--<context:component-scan base-package="com.zoomoor" />-->
+	<context:component-scan base-package="com.zoomoor">  
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />  
+ 	</context:component-scan>
+
+	<!-- 默认的注解映射的支持 -->
+	<mvc:annotation-driven />
+
+	<!-- 对静态资源文件的访问 -->
+	<mvc:default-servlet-handler />
+	
+	<!-- 视图解释类 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/zoomoor_sys/" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors >  
+	  	<mvc:interceptor>  
+	        <mvc:mapping path="/*.do" />
+	        <mvc:mapping path="/*/*.do" />
+	        <mvc:mapping path="/*/*/*.do" />
+	        <bean class="com.zoomoor.core.web.AdminContextInterceptor"></bean>  
+	    </mvc:interceptor>
+	    <!-- 防止重复提交拦截器-->
+	    <!-- <mvc:interceptor>
+	    <mvc:mapping path="/**"/>
+	    <bean  class="com.zoomoor.common.web.interceptor.TokenInterceptor"/>
+	    </mvc:interceptor> -->
+	</mvc:interceptors>
+	
+	<!-- SpringMVC上传文件时,需配置MultipartResolver处理器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 指定所上传文件的总大小不能超过3MB......注意maxUploadSize属性的限制不是针对单个文件,而是所有文件的容量之和 -->
+        <property name="maxUploadSize" value="314572800"/>
+    </bean>
+    
+	<!-- 总错误处理-->
+	<!-- 
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView">  
+		 	<value>/error/error</value>
+		</property>
+		<property name="defaultStatusCode">  
+		 	<value>500</value>
+		</property>	
+	<property name="warnLogCategory">  
+		 	<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver</value>
+		</property>	
+	</bean>
+	-->
+	<!-- json 支持 -->
+	<!-- 
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+     	<property name="objectMapper" ref="commonObjectMapper"/>  
+	        <property name="supportedMediaTypes">  
+	            <list>  
+	               <value>text/html;charset=UTF-8</value>  
+	           </list>  
+	       </property>  
+	</bean>
+     -->
+ 	<!-- ObjectMapper json转换 -->
+ 	<!-- 
+	<bean id="commonObjectMapper" class="cn.com.starit.util.CommonObjectMapper"/>  
+	 -->
+</beans>

@@ -1,0 +1,13 @@
+#mysql\u914D\u7F6E
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://192.168.1.111:3306/jiayue?characterEncoding=UTF-8&autoReconnect=true
+jdbc.username=root
+jdbc.password=root
+
+cpool.checkoutTimeout=5000
+cpool.minPoolSize=200
+cpool.maxPoolSize=500
+
+cpool.maxIdleTime=7200
+cpool.maxIdleTimeExcessConnections=1800
+cpool.acquireIncrement=10

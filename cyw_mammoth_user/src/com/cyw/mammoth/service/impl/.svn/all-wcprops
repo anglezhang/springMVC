@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mammoth/!svn/ver/3202/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl
+END
+RmtypeNumSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/RmtypeNumSvcImpl.java
+END
+GrpDocSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/3050/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/GrpDocSvcImpl.java
+END
+HconsumeSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/1342/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HconsumeSvcImpl.java
+END
+BpaiedSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/BpaiedSvcImpl.java
+END
+HolidaysSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/3117/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HolidaysSvcImpl.java
+END
+HbuildingSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/1353/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HbuildingSvcImpl.java
+END
+HroomTypeSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HroomTypeSvcImpl.java
+END
+HroomDefineSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/1427/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HroomDefineSvcImpl.java
+END
+CodeCareSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/1470/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/CodeCareSvcImpl.java
+END
+GstPriceListSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/GstPriceListSvcImpl.java
+END
+DayAuditSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/3161/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/DayAuditSvcImpl.java
+END
+GuestdocSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/3273/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/GuestdocSvcImpl.java
+END
+ShiftLogSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/2752/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/ShiftLogSvcImpl.java
+END
+BookCheckInSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/2074/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/BookCheckInSvcImpl.java
+END
+BookRoomSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/2529/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/BookRoomSvcImpl.java
+END
+OperatorSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/3196/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/OperatorSvcImpl.java
+END
+WorkGroupRightsSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/WorkGroupRightsSvcImpl.java
+END
+HgstOriSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/2143/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HgstOriSvcImpl.java
+END
+HroomTypeImgSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HroomTypeImgSvcImpl.java
+END
+HsetlKindSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HsetlKindSvcImpl.java
+END
+ParameterSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/1342/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/ParameterSvcImpl.java
+END
+GstCreditAuthSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mammoth/!svn/ver/1329/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/GstCreditAuthSvcImpl.java
+END
+RoomsDiarySvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/RoomsDiarySvcImpl.java
+END
+TADocSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/TADocSvcImpl.java
+END
+RoomNumSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/2289/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/RoomNumSvcImpl.java
+END
+HcountrySvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HcountrySvcImpl.java
+END
+WorkGroupSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/3196/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/WorkGroupSvcImpl.java
+END
+GstBillSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/2299/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/GstBillSvcImpl.java
+END
+HfolkSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HfolkSvcImpl.java
+END
+FguestSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/2392/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/FguestSvcImpl.java
+END
+HsettleSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HsettleSvcImpl.java
+END
+NoguestSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/3222/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/NoguestSvcImpl.java
+END
+RoomsSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2960/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/RoomsSvcImpl.java
+END
+HcodesSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/2570/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HcodesSvcImpl.java
+END
+HgstOriTypeSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/2143/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HgstOriTypeSvcImpl.java
+END
+HfunctionSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/2753/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HfunctionSvcImpl.java
+END
+BookRoomCheckInSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/1757/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/BookRoomCheckInSvcImpl.java
+END
+HroomPlanListSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HroomPlanListSvcImpl.java
+END
+HexchangeSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/1389/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HexchangeSvcImpl.java
+END
+BillsSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/BillsSvcImpl.java
+END
+HroomPlanSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/Mammoth/!svn/ver/3158/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HroomPlanSvcImpl.java
+END
+HroomCharactersSvcImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/1455/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/service/impl/HroomCharactersSvcImpl.java
+END

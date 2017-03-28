@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/3198/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn
+END
+guestdetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Mammoth/!svn/ver/3198/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/guestdetail.jsp
+END
+bookDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/2098/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/bookDetail.jsp
+END
+roomTypeAlert.jspf
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Mammoth/!svn/ver/2792/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/roomTypeAlert.jspf
+END
+checkInInput.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Mammoth/!svn/ver/2939/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/checkInInput.jsp
+END
+otherInfo.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Mammoth/!svn/ver/1504/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/otherInfo.jsp
+END
+groupdetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Mammoth/!svn/ver/3107/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/groupdetail.jsp
+END
+indexList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Mammoth/!svn/ver/3253/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/indexList.jsp
+END
+selectRoomsAlert.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/Mammoth/!svn/ver/2331/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/rooms/bookCheckIn/selectRoomsAlert.jsp
+END

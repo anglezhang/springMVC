@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 标签库描述符 -->
+<taglib>
+	<!-- tlib版本 -->
+	<tlib-version>1.0</tlib-version>
+	<!-- jsp版本 -->
+	<jsp-version>2.1</jsp-version>
+	<!-- 描述文件名 -->  
+	<!-- <short-name>/tag</short-name> -->
+	<tag>
+		<!-- 标签名字 -->
+		<name>auth</name>
+		<!-- 执行类 -->
+		<tag-class>com.zoomoor.common.tld.AuthTag</tag-class>
+		<!-- 设置类型 -->
+    	<!-- <body-content>JSP</body-content> -->
+    	<!-- 设置属性 -->
+		<attribute>
+			<!-- 属性名称  -->
+			<name>code</name>
+			<!-- 是否必填属性  -->
+			<required>true</required>
+			<!-- 是否支持运行时表达式取值就是是否可以 <%=%>或则是${}方式传值  -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

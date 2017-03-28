@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/3167/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room
+END
+right.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/right.jsp
+END
+clockRoom_set.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/clockRoom_set.jsp
+END
+holidays_set.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/3167/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/holidays_set.jsp
+END
+roomPlanList.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/3085/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/roomPlanList.jsp
+END
+roomPlan.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/2939/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/roomPlan.jsp
+END
+rooms_type_set.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Mammoth/!svn/ver/2951/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/rooms_type_set.jsp
+END
+building.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/3229/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/building.jsp
+END
+rooms_character_set.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Mammoth/!svn/ver/2951/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/rooms_character_set.jsp
+END
+roomDefine.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mammoth/!svn/ver/2939/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/syssetting/room/roomDefine.jsp
+END

@@ -1,0 +1,33 @@
+package com.zoomoor.jy.dao;
+
+import java.util.List;
+
+import com.zoomoor.common.base.bean.Pager;
+import com.zoomoor.common.base.dao.BaseDao;
+import com.zoomoor.jy.entity.Serviceitem;
+
+/**
+ * 描述：ServiceitemDao
+ * @author Zhangzhenxing
+ * @Date 2015年7月20日 上午9:52:02
+ * @version 1.0
+ */
+public interface ServiceitemDao extends BaseDao<Serviceitem, Integer>{
+	
+	/**
+	 * 获取分页数据
+	 * @param queryItemCode 服务项目编号
+	 * @param queryItemName 服务项目名称
+	 * */
+	Pager getPager (Pager pager, String queryItemCode, String queryItemName);
+	
+	/**
+	 * 获取lookUp分页对象
+	 * */
+	Pager listPager(Pager pager, String queryItemCode, String queryItemName,String itemIdS,Integer id);
+	
+	/**
+	 * 服务look项目列表
+	 * */
+	List getLooklist(Integer carId,String queryItemCode, String queryItemName,String itemIdS);
+}

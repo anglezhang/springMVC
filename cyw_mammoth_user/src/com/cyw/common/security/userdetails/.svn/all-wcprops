@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/security/userdetails
+END
+UserDetailsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/security/userdetails/UserDetailsService.java
+END
+UserDetailsChecker.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/security/userdetails/UserDetailsChecker.java
+END
+AccountStatusUserDetailsChecker.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/security/userdetails/AccountStatusUserDetailsChecker.java
+END
+UserDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/security/userdetails/UserDetails.java
+END

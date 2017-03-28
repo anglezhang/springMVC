@@ -1,0 +1,213 @@
+package com.zoomoor.jy.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Transient;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+/**
+ * Serviceitem entity. @author MyEclipse Persistence Tools
+ */
+@Entity
+@Table(name = "serviceitem" )
+public class Serviceitem implements java.io.Serializable {
+
+	// Fields
+
+	private Integer itemId;
+	private Servicetype servicetype;
+	private String itemcode;
+	private String itemname;
+	private Double workhourmoney;
+	private Integer intergral;//积分
+	private Double discount;//折扣
+	private Boolean del;
+	private String brandname;//使用车型车系名称
+	private InfoBrand infoBrand;//适用车型车型实体对象 
+	private String pinyincode;//拼音代码
+	private Set<SitemgoodsMapping> sitemgoodsMappings = new HashSet<SitemgoodsMapping>(
+			0);
+	private Set<CustomerEntrustSub> customerEntrustSubs = new HashSet<CustomerEntrustSub>(
+			0);
+	private SitemgoodsMapping[] siteGoodMap;
+
+	private Integer entrustsubId;//客户委托单子表id
+	// Constructors
+
+	/** default constructor */
+	public Serviceitem() {
+	}
+
+	/** full constructor */
+	public Serviceitem(Servicetype servicetype, String itemcode,
+			String itemname, Double workhourmoney, Integer intergral,
+			Boolean del, Set<SitemgoodsMapping> sitemgoodsMappings,
+			Set<CustomerEntrustSub> customerEntrustSubs) {
+		this.servicetype = servicetype;
+		this.itemcode = itemcode;
+		this.itemname = itemname;
+		this.workhourmoney = workhourmoney;
+		this.intergral = intergral;
+		this.del = del;
+		this.sitemgoodsMappings = sitemgoodsMappings;
+		this.customerEntrustSubs = customerEntrustSubs;
+	}
+
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "item_id", unique = true, nullable = false)
+	public Integer getItemId() {
+		return this.itemId;
+	}
+
+	public void setItemId(Integer itemId) {
+		this.itemId = itemId;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "servicetype_id")
+	public Servicetype getServicetype() {
+		return this.servicetype;
+	}
+
+	public void setServicetype(Servicetype servicetype) {
+		this.servicetype = servicetype;
+	}
+
+	@Column(name = "itemcode", length = 30)
+	public String getItemcode() {
+		return this.itemcode;
+	}
+
+	public void setItemcode(String itemcode) {
+		this.itemcode = itemcode;
+	}
+
+	@Column(name = "itemname", length = 30)
+	public String getItemname() {
+		return this.itemname;
+	}
+
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
+	}
+
+	@Column(name = "workhourmoney", precision = 9)
+	public Double getWorkhourmoney() {
+		return this.workhourmoney;
+	}
+
+	public void setWorkhourmoney(Double workhourmoney) {
+		this.workhourmoney = workhourmoney;
+	}
+
+	@Column(name = "intergral")
+	public Integer getIntergral() {
+		return this.intergral;
+	}
+
+	public void setIntergral(Integer intergral) {
+		this.intergral = intergral;
+	}
+
+	@Column(name = "del")
+	public Boolean getDel() {
+		return this.del;
+	}
+
+	public void setDel(Boolean del) {
+		this.del = del;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "serviceitem")
+	public Set<SitemgoodsMapping> getSitemgoodsMappings() {
+		return this.sitemgoodsMappings;
+	}
+
+	public void setSitemgoodsMappings(Set<SitemgoodsMapping> sitemgoodsMappings) {
+		this.sitemgoodsMappings = sitemgoodsMappings;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "serviceitem")
+	public Set<CustomerEntrustSub> getCustomerEntrustSubs() {
+		return this.customerEntrustSubs;
+	}
+
+	public void setCustomerEntrustSubs(
+			Set<CustomerEntrustSub> customerEntrustSubs) {
+		this.customerEntrustSubs = customerEntrustSubs;
+	}
+
+	@Transient
+	public SitemgoodsMapping[] getSiteGoodMap() {
+		return siteGoodMap;
+	}
+
+	public void setSiteGoodMap(SitemgoodsMapping[] siteGoodMap) {
+		this.siteGoodMap = siteGoodMap;
+	}
+
+	@Column(name = "discount")
+	public Double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+
+	@Column(name = "brandname")
+	public String getBrandname() {
+		return brandname;
+	}
+
+	public void setBrandname(String brandname) {
+		this.brandname = brandname;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id")
+	public InfoBrand getInfoBrand() {
+		return infoBrand;
+	}
+
+	public void setInfoBrand(InfoBrand infoBrand) {
+		this.infoBrand = infoBrand;
+	}
+
+	@Transient
+	public Integer getEntrustsubId() {
+		return entrustsubId;
+	}
+
+	public void setEntrustsubId(Integer entrustsubId) {
+		this.entrustsubId = entrustsubId;
+	}
+
+	@Column(name = "pinyin", length = 30)
+	public String getPinyincode() {
+		return pinyincode;
+	}
+
+	public void setPinyincode(String pinyincode) {
+		this.pinyincode = pinyincode;
+	}
+	
+	
+	
+	
+}

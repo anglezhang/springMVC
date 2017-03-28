@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*浏览器初始化*/
+*{ margin:0;
+   padding:0;
+   list-style:none;
+   text-decoration:none;
+   font-size:14px;
+   font-weight:normal;
+   border:none;
+   outline:none;}
+
+.clear {
+   display:block;
+   clear:both;
+   content:"";
+   visibility:hidden;
+   height:0;
+   float:none; 
+   overflow:hidden;}
+   
+   
+/*table*/
+
+.table-box{
+		width:1180px;
+		height:auto;
+		margin:50px auto;
+		background:#fff;
+		border:1px solid #333;}
+		
+.table{
+		width:100%;
+		height:auto;
+		padding:2%;
+		border-bottom:1px solid #333;}
+		
+.title{
+		width:100%;
+		text-align:center;
+		font-size:32px;
+		font-weight:700;
+		margin-bottom:10px;
+		float:left;}
+		
+.table tr{
+		line-height:2em;
+		color:#333;}
+		
+.table .blod{
+		line-height:5em;}
+
+.table .blod td{
+		font-weight:600;}
+		
+.button{
+		width:120px;
+		height:30px;
+		line-height:30px;
+		background:#34cadf;
+		border:none;
+		cursor:pointer;
+		color:#fff;
+		font-size:14px;}

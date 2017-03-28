@@ -1,0 +1,150 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../include/taglib.jsp" %>
+<form id="pagerForm" method="post" action="${pageContext.request.contextPath}/apporder/list.do">
+	<input type="hidden" name="pageNum" value="${pager.pageNum}" />
+	<input type="hidden" name="numPerPage" value="${pager.numPerPage}" />
+	<input type="hidden" name="queryUsername" value="${queryUsername}" />
+	<input type="hidden" name="queryRealname" value="${queryRealname}" />
+</form>
+<div class="pageHeader">
+	<form onsubmit="return navTabSearch(this);" action="${pageContext.request.contextPath}/apporder/list.do" method="post">
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						客户信息：<input type="text" name="queryTel" value="${queryTel}" placeholder="姓名或电话"/>
+					</td>
+					<td>
+						客户车辆：<input type="text" name="queryPlatenum" value="${queryPlatenum}"/>
+					</td>
+					<td>
+						服务类型：<select class="" name="queryAppType" style="width:152px;height:21px;"  >
+							<option value="">全部</option>
+							<c:forEach items="${serviceItem}" var="serviceType" varStatus="s">
+								<option value="${serviceType.servicetypeId}" <c:if test="${queryAppType==serviceType.servicetypeId}" >selected="selected"</c:if>>${serviceType.servicename}</option>
+							</c:forEach>
+						</select>
+					</td>
+					<td>
+						来源：<select class="" name="querySource" style="width:152px;height:21px;">
+								<option value="">全部</option>
+								<option value="0" <c:if test="${querySource==0}" >selected="selected"</c:if>>微信</option>
+								<option value="1" <c:if test="${querySource==1}" >selected="selected"</c:if>>PC后台</option>
+								<option value="2" <c:if test="${querySource==2}" >selected="selected"</c:if> >客户端</option>
+							</select>
+					</td>
+					
+				</tr>
+				<tr>
+					<td>
+						开单时间：<input type="text" class="date"  readonly="readonly" datefmt="yyyy-MM-dd HH:mm:ss" name="queryBegintime" value="${queryBegintime}" > ~ <input type="text" class="date"  readonly="readonly" datefmt="yyyy-MM-dd HH:mm:ss" name="queryEndtime" value="${queryEndtime}" >
+					</td>
+					<td>
+						预约时间：<input type="text" class="date"  readonly="readonly" datefmt="yyyy-MM-dd HH:mm:ss" name="querySellstart" value="${querySellstart}" > ~ <input type="text" class="date"  readonly="readonly" datefmt="yyyy-MM-dd HH:mm:ss" name="querySellend" value="${querySellend}" >
+					</td>
+					<td>
+						预约状态：
+						<select class="" name="queryStatus" style="width:152px;height:21px;">
+							<option value="">所有预约状态</option>
+							<option value="0" <c:if test="${queryStatus == 0}">selected="selected"</c:if> >待确认</option>
+							<option value="1" <c:if test="${queryStatus == 1}">selected="selected"</c:if> >已确认</option>
+							<option value="2" <c:if test="${queryStatus == 2}">selected="selected"</c:if> >已履约</option>
+							<option value="4" <c:if test="${queryStatus == 4}">selected="selected"</c:if> >已取消</option>
+						</select>
+					</td>
+					<td>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+		<ul class="toolBar">
+			<tag:auth code="app.order.add">
+				<li><a class="add" href="${pageContext.request.contextPath}/app/orderadd.do" target="dialog"  width="1100" height="720"mask="true" rel="orderadd"><span>添加</span></a></li>
+			</tag:auth>
+		</ul>
+	</div>
+	<table class="table" width="100%" layoutH="138">
+		<thead>
+			<tr>
+				<th align="center">服务单号</th>
+				<th align="center">服务类型</th>
+				<th align="center">车牌号</th>
+				<th align="center">预约时间</th>
+				<th align="center">预约状态</th>
+				<th align="center">指派店铺</th>
+				<th align="center">客户姓名</th>
+				<th align="center">客户电话</th>
+				<th align="center">来源</th>
+				<th align="center">开单时间</th>
+				<th align="center">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${pager.list}" var="customerAppoit" varStatus="s">
+				<tr>
+					<td>
+						${customerAppoit.cusorderNO}
+					</td>
+					<td>
+						<c:forEach items="${serviceItem}" var="serviceType" varStatus="s">
+							<c:if test="${serviceType.servicetypeId==customerAppoit.appoittype}">${serviceType.servicename}</c:if>
+						</c:forEach>
+					</td>
+					<td>
+						${customerAppoit.infoCar.platenum}
+					</td>
+					<td>
+						<fmt:formatDate value="${customerAppoit.appoittime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					</td>
+					<td>
+						<c:if test="${customerAppoit.cus==0}" >待确认</c:if>
+						<c:if test="${customerAppoit.cus==1}" >已确认</c:if>
+						<c:if test="${customerAppoit.cus==2}" >已履约</c:if>
+						<c:if test="${customerAppoit.cus==4}" >已取消</c:if>
+					</td>
+					<td>
+						${customerAppoit.infoDept.name}
+					</td>
+					<td>
+						${customerAppoit.infoCustomer.customerName}
+					</td>
+					<td>
+						${customerAppoit.infoCustomer.tel}
+					</td>
+					<td>
+						<c:if test="${customerAppoit.source==0}">微信</c:if>
+						<c:if test="${customerAppoit.source==1}">PC后台</c:if>
+					</td>
+					<td>
+						<fmt:formatDate value="${customerAppoit.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					</td>
+					<td>
+						<tag:auth code="app.order.scan">
+							<a title="查看" target="dialog" width="1100" height="720" mask="true" href="${pageContext.request.contextPath}/app/orderscan.do?cusappoitId=${customerAppoit.cusappoitId}" rel="appcustomerScan" class="btn btn-ck"></a>
+						</tag:auth>	
+						<c:if test="${customerAppoit.cus==0}">
+							<tag:auth code="app.order.edit">
+								<a title="修改" target="dialog" width="1100" height="720" mask="true" href="${pageContext.request.contextPath}/app/orderedit.do?cusappoitId=${customerAppoit.cusappoitId}" rel="appcustomerEdit" class="btn btn-edit"></a>
+							</tag:auth>	
+							<tag:auth code="app.order.cancel">
+								<a title="取消订单" target="ajaxTodo"  mask="true" href="${pageContext.request.contextPath}/app/orderdcancle.do?cusappoitId=${customerAppoit.cusappoitId}" class="btn btn-off"></a>
+							</tag:auth>
+							<tag:auth code="app.order.Assign">
+								<a title="立即指派" target="dialog" width="1100" height="720" mask="true" mask="true" rel="apporderAssgin" href="${pageContext.request.contextPath}/app/Assign.do?cusappoitId=${customerAppoit.cusappoitId}" class="btn btn-cy"></a>
+							</tag:auth>
+							<tag:auth code="app.order.delete">
+								<a title="删除" target="ajaxTodo"  mask="true" href="${pageContext.request.contextPath}/app/orderdelete.do?cusappoitId=${customerAppoit.cusappoitId}" class="btn btn-delete"></a>
+							</tag:auth>	
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	<%@ include file="../include/page.jsp" %>
+</div>

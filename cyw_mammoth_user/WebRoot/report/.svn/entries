@@ -1,0 +1,40 @@
+10
+
+dir
+2769
+http://10.0.0.9:8080/svn/Mammoth/develop/trunk/cyw_mammoth_user/WebRoot/report
+http://10.0.0.9:8080/svn/Mammoth
+
+
+
+2015-10-20T04:15:08.571379Z
+698
+liuweixing
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+04d73987-fe55-4144-b19f-c31aec2d8c39
+
+Scripts
+dir
+
+css
+dir
+
+fonts
+dir
+
+images
+dir
+

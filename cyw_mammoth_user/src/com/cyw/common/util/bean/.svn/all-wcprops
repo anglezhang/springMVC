@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Mammoth/!svn/ver/2578/develop/trunk/cyw_mammoth_user/src/com/cyw/common/util/bean
+END
+CurrencyConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/2552/develop/trunk/cyw_mammoth_user/src/com/cyw/common/util/bean/CurrencyConverter.java
+END
+StringConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/2552/develop/trunk/cyw_mammoth_user/src/com/cyw/common/util/bean/StringConverter.java
+END
+TimestampConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/2552/develop/trunk/cyw_mammoth_user/src/com/cyw/common/util/bean/TimestampConverter.java
+END
+DateConverter.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2552/develop/trunk/cyw_mammoth_user/src/com/cyw/common/util/bean/DateConverter.java
+END
+BeanUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/2578/develop/trunk/cyw_mammoth_user/src/com/cyw/common/util/bean/BeanUtils.java
+END

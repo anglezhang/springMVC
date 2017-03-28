@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc
+END
+WebErrors.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/WebErrors.java
+END
+BindingInitializer.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/BindingInitializer.java
+END
+MessageResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/MessageResolver.java
+END
+RichFreeMarkerViewResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/RichFreeMarkerViewResolver.java
+END
+SimpleFreeMarkerView.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/SimpleFreeMarkerView.java
+END
+RealPathResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/RealPathResolver.java
+END
+RichFreeMarkerView.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/RichFreeMarkerView.java
+END
+DateTypeEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/DateTypeEditor.java
+END
+ServletContextRealPathResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/ServletContextRealPathResolver.java
+END
+SimpleFreeMarkerViewResolver.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/web/springmvc/SimpleFreeMarkerViewResolver.java
+END

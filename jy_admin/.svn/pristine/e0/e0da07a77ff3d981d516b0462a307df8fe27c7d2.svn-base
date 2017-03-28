@@ -1,0 +1,159 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../include/taglib.jsp" %>
+<div class="pageContent">
+	<form method="post" action="${pageContext.request.contextPath}/app/ordersave.do" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+		<input  name="source" type="hidden"  value="1"  />
+		<input id="carId" name="infoCar.carId" type="hidden" />
+		<input id="brandId" name="infoBrand.id" type="hidden" />
+		<input  name="cus" type="hidden" value="0" />
+		<div class="pageFormContent" layoutH="80">
+			<h3 style="margin:10px 0 10px 5px;">客户信息</h3>
+			<table class="table" width="100%">
+				<tr>
+					<td width="100">客户车辆：</td>
+					<td >
+						<a id="carInfoLookup" title="客户车辆" width="800" height="600" class="btnLook" href="${pageContext.request.contextPath}/apporder/carlookup.do" lookupGroup="ordercarInfoLookup" style="margin-right:190px;float:right" rel="ordercarInfoLookup" lookupPk="ordercarInfoLookup"></a>
+						<input id="platenum" name="infoCar.platenum" type="text"  maxlength="30" class="required" readonly="readonly" size="30" onchange="clealCarInf()"/>
+					</td>
+					<td width="100">客户姓名：</td>
+					<td width="400">
+						<input id="customerName" type="text"  maxlength="30" class="required" readonly="readonly" size="30" />
+						<input id="customerId" type="hidden" name="infoCustomer.customerId" maxlength="30"  />
+						<a id="appordercustomerLookup" title="选择客户" width="800" height="600" class="btnLook" href="${pageContext.request.contextPath}/apporder/customerlookup.do" lookupGroup="appordercustomerLookup" rel="appordercustomer"></a>
+					</td>
+				</tr>
+			</table>
+			<table class="table" width="100%">
+				<tr>
+					<td width="100">客户电话</td>
+					<td width="400" id="tel">
+					</td>
+					<td width="100" >品牌</td>
+					<td id="brandName">
+					</td>
+				</tr>
+				<tr>
+					<td>上次投保时间</td>
+					<td id="nextins">
+					</td>
+					<td>购车日期</td>
+					<td id="buytime">
+					</td>
+				</tr>
+				<tr>
+					<td>挂牌时间</td>
+					<td id="listingtime"> 
+					</td>
+					<td>行驶里程</td>
+					<td id="mileage"> 
+					</td>
+				</tr>
+				<tr>
+					<td>上次保养</td>
+					<td id="nextmain">
+					</td>
+				</tr>
+			</table>
+			<h3 style="margin:10px 0 10px 5px;">预约基本信息</h3>
+			<table class="table" width="100%">
+				<tbody>
+					<tr>
+						<td width="10%">预约类别</td>
+						<td width="40%">
+							<select name="appoittype" id="appoittype" style="width:212px;">
+								<c:forEach items="${serviceItem}" var="serviceType" varStatus="s">
+									<option value="${serviceType.servicetypeId}">${serviceType.servicename}</option>
+								</c:forEach>
+							</select>
+							<!--<c:forEach items="${serviceItem}" var="serviceType" varStatus="s">
+								<input type="checkbox" name="appoittypes" value="${serviceType.servicetypeId}">${serviceType.servicename}
+							</c:forEach>-->
+						</td>
+						<td width="10%">预约时间</td>
+						<td width="40%">
+							<input name="appoittime" type="text" class="date" maxlength="30" class="required" readonly="readonly" size="30" datefmt="yyyy-MM-dd HH:mm:ss"/>
+						</td>
+					</tr>
+					<tr>
+						<td>开单</td>
+						<td>${user.infoEmp.empName}</td>
+						<td>开单时间</td>
+						<td><fmt:formatDate value="${time}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+					</tr>
+					<tr>
+						<td>备注</td>
+						<td colspan="3">
+							<input name="remark" type="text"  maxlength="50"  size="120" />
+						</td>
+					</tr>
+					<tr>
+						<td>服务描述</td>		
+						<td colspan="3">
+							<input name="description" type="text"  maxlength="50"  size="120" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="formBar">
+			<ul>
+				<tag:auth code="app.order.save">
+					<li>
+						<div class="buttonActive"><div class="buttonContent"><button type="submit">保存</button></div></div>
+					</li>
+				</tag:auth>
+				
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	/**
+	* 设置客户信息
+	*/
+	function setLookVal(customer)
+	{
+		for(k in customer)
+		{
+			var thisVal = customer[k];
+			if(thisVal.toString().indexOf(".") != -1)
+			{
+				thisVal =  thisVal.toString().substr(0,thisVal.toString().indexOf(":"));
+			}
+			$("#" + k).val(thisVal);
+		}
+		for(k in customer)
+		{
+			var thisVal = customer[k];
+			if(thisVal.toString().indexOf(".") != -1)
+			{
+				thisVal =  thisVal.toString().substr(0,thisVal.toString().indexOf("."));
+			}
+			$("#" + k).html(thisVal);
+		}
+		var carInfoLookupObj = $("#appordercustomerLookup");
+		var hrefVal = carInfoLookupObj.prop("href");
+		if(hrefVal.indexOf("carId") == -1)
+		{
+			carInfoLookupObj.prop("href",hrefVal + "?carId=" + customer.carId);
+		}else if(customer.carId)
+		{
+			var newHref = hrefVal.substr(0,hrefVal.indexOf("?"));
+			carInfoLookupObj.prop("href",newHref + "?carId=" + customer.carId);
+		}
+		if(customer.iscustomer)
+		{
+			$("#platenum").trigger('change');
+		}
+	}
+	/**
+	* 车主信息改变 将车辆置空
+	*/
+	function clealCarInf()
+	{
+		$("#customerName").val("");
+	}
+</script>

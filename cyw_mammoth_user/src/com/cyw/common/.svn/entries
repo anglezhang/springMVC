@@ -1,0 +1,64 @@
+10
+
+dir
+2769
+http://10.0.0.9:8080/svn/Mammoth/develop/trunk/cyw_mammoth_user/src/com/cyw/common
+http://10.0.0.9:8080/svn/Mammoth
+
+
+
+2015-12-16T11:08:45.674905Z
+2644
+weixiaoliang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+04d73987-fe55-4144-b19f-c31aec2d8c39
+
+base
+dir
+
+captcha
+dir
+
+email
+dir
+
+fck
+dir
+
+file
+dir
+
+hibernate3
+dir
+
+image
+dir
+
+page
+dir
+
+security
+dir
+
+upload
+dir
+
+util
+dir
+
+web
+dir
+

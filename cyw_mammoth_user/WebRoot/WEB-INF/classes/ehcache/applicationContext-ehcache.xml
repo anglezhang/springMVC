@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>EhCache配置文件</description>
+
+	<bean id="simpleCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:/ehcache/ehcache.xml" />
+		<property name="shared" value="true"></property>
+	</bean>
+	<bean id="simpleCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+	    <property name="cacheManager" ref="simpleCacheManager" />
+	    <!-- 使用缓存 关联ehcache.xml中的缓存配置 -->
+	    <property name="cacheName" value="serviceCache" />
+   </bean>
+	<bean id="methodCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager">
+            <ref local="simpleCacheManager"/>
+        </property>
+        <property name="cacheName">
+            <value>methodCache</value>
+        </property>
+    </bean>
+    <bean name="myEhCacheCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+       <property name="cacheManager" ref="simpleCacheManager"/>  
+    <property name="transactionAware" value="true"/> 
+    </bean>
+</beans>

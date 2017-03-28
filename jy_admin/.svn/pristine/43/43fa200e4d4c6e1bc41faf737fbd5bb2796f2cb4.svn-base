@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-lazy-init="true">
+
+ 	<!-- 扫描注解 -->  
+	<context:component-scan base-package="com.zoomoor">  
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>  
+	</context:component-scan>
+	
+	<!-- 加载配置文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/config/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="autoCommitOnClose" value="true"/>
+		<property name="checkoutTimeout" value="${cpool.checkoutTimeout}"/>
+		<property name="initialPoolSize" value="${cpool.minPoolSize}"/>
+		<property name="minPoolSize" value="${cpool.minPoolSize}"/>
+		<property name="maxPoolSize" value="${cpool.maxPoolSize}"/>
+		<property name="maxIdleTime" value="${cpool.maxIdleTime}"/>
+		<property name="acquireIncrement" value="${cpool.acquireIncrement}"/>
+		<property name="maxIdleTimeExcessConnections" value="${cpool.maxIdleTimeExcessConnections}"/>
+		<property name="idleConnectionTestPeriod" value="60"/>
+		<property name="preferredTestQuery" value="select *from info_summary"/>
+		<!-- <property name="testConnectionOnCheckin" value="false"/>
+		<property name="testConnectionOnCheckout" value="false"/> -->
+		
+	</bean>
+	
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.autoReconnect">true</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.zoomoor.jy.entity</value>
+				<value>com.zoomoor.admin.entity</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 配置事务，使用代理的方式 -->
+	<!-- 
+    <bean id="transactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">
+		<property name="transactionManager" ref="transactionManager"></property>
+	    <property name="transactionAttributes">
+		    <props>
+			    <prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
+			    <prop key="modify*">PROPAGATION_REQUIRED,-myException</prop>
+			    <prop key="del*">PROPAGATION_REQUIRED</prop>
+			    <prop key="*">PROPAGATION_REQUIRED</prop>
+		    </props>
+	    </property>
+    </bean>
+	 -->
+	<!-- 国际化的消息资源文件 -->
+	<!-- 
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">  
+		<property name="basenames">  
+			 <list>  
+			<value>classpath:com/avicit/resource/message/messages</value>  
+			</list>  
+		</property>  
+		<property name="defaultEncoding" value="UTF-8"/>  
+		<property name="cacheSeconds" value="60"/>  
+	</bean>  
+	 -->
+	<context:annotation-config />
+	<!-- 使用注解方式定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

@@ -1,0 +1,8 @@
+.ac_results {background-color: white;	overflow: hidden;	z-index: 99999;}
+.ac_results ul { width:538px; border:1px solid #e5e5e5;}
+.ac_results li {margin: 0px;padding: 0 15px; cursor: pointer; display: block; font-size: 14px;line-height: 16px; color:#777;	overflow: hidden;	line-height: 40px;	height: 40px;	text-align: center;}
+.ac_results li:hover{background-color: #21db6c;	color: #fff;} 
+li.ac_even.ac_over {}
+.ac_loading {background: white url('../image/indicator.gif') right center no-repeat;}
+.ac_odd {background-color: #eee;}
+.ac_over {background-color: #fff;	color: #21db6c;}

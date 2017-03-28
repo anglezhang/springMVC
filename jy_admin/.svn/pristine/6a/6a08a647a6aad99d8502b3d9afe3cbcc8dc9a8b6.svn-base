@@ -1,0 +1,93 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../include/taglib.jsp" %>
+<form id="pagerForm" method="post" action="${pageContext.request.contextPath}/serviceItem/lookup.do">
+	<input type="hidden" name="pageNum" value="${pager.pageNum}" />
+	<input type="hidden" name="numPerPage" value="${pager.numPerPage}" />
+	<input type="hidden" name="itemIdS" value="${itemIdS}" />
+	<input type="hidden" name="carId" value="${carId}" />
+</form>
+<div class="pageHeader">
+	<form onsubmit="return dialogSearch(this);" action="${pageContext.request.contextPath}/serviceItem/lookup.do" method="post">
+		<input type="hidden" name="pageNum" value="${pager.pageNum}" />
+		<input type="hidden" name="numPerPage" value="${pager.numPerPage}" />
+		<input type="hidden" name="itemIdS" value="${itemIdS}" />
+		<input type="hidden" name="carId" value="${carId}" />
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						项目编码：<input type="text" name="queryItemCode" value="${queryItemCode}" />
+					</td>
+					<td>
+						项目名称：<input type="text" name="queryItemName" value="${queryItemName}" />
+					</td>
+					<td>
+						<div class="buttonActive">
+							<div class="buttonContent">
+								<button type="reset">重置</button>
+							</div>
+						</div>
+						<div class="buttonActive">
+							<div class="buttonContent">
+								<button type="submit">检索</button>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<div class="pageContent">
+	<table  class="table" width="100%" layoutH="112">
+		<thead align="center">
+			<tr>
+				<th width="50">服务类型</th>
+				<th width="80">项目编码</th>
+				<th>项目名称</th>
+				<th>工时费工时费(￥元)</th>
+				<th>折扣系数</th>
+				<th>积分</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${list}" var="list" varStatus="status">
+				<tr align="center">
+					<td align="center">${list.servicename}</td>
+					<td>${list.itemcode}</td>
+					<td>${list.itemname}</td>
+					<td><fmt:formatNumber value="${list.workhourmoney}" type="currency"/></td>
+					<td><fmt:formatNumber value="${list.discount}" /></td>
+					<td>${list.intergral}</td>
+					<td>
+						<a class="btn btn-xzdh" href="javascript:$.bringBack({itemId:'${list.item_id}',servicename:'${list.servicetype.servicename}',servicetypeId:'${list.servicetypeId}',itemname:'${list.itemname}',itemcode:'${list.itemcode}',workhourmoney:'${list.workhourmoney}',intergral:'${list.intergral}',discount:'<fmt:formatNumber value="${list.discount}" />'}),createTable({itemId:'${list.item_id}',servicename:'${list.servicename}',servicetypeId:'${list.servicetypeId}',itemname:'${list.itemname}',itemcode:'${list.itemcode}',workhourmoney:'${list.workhourmoney}',intergral:'${list.intergral}',discount:'<fmt:formatNumber value="${list.discount}" />'})" title="选择带回"></a>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	<div class="formBar">
+		<ul>
+			<li>
+				<div class="button"><div class="buttonContent"><button id="addCarinfobtn" type="button" class="close">取消</button></div></div>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function()
+	{
+		var customerId = $("[name='carId']").val();
+		if(customerId==="")
+		{
+			var errorMsg = new Object();
+			errorMsg.statusCode = 300;
+			errorMsg.message = "请先选择客户车辆";
+			dialogAjaxDone(errorMsg);
+			var dialog = $.pdialog._current;
+			$("body").removeData($(dialog).data("id"));
+			$(dialog).trigger(DWZ.eventType.pageClear).remove();
+		}
+	});
+</script>

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Mammoth/!svn/ver/2711/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config
+END
+applicationContext多数据源.xml
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/Mammoth/!svn/ver/904/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/applicationContext%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90.xml
+END
+spring-mvc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Mammoth/!svn/ver/2998/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/spring-mvc.xml
+END
+cache-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/cache-config.xml
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mammoth/!svn/ver/2893/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/jdbc.properties
+END
+jdbc_back.properties
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Mammoth/!svn/ver/906/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/jdbc_back.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mammoth/!svn/ver/2531/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/log4j.properties
+END
+ehcache.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/ehcache.xml
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/2893/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/config/applicationContext.xml
+END

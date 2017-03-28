@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+ updateCheck="false">
+ <diskStore path="/usr/local/cach_three/cache" />
+ <defaultCache eternal="false" 
+   maxElementsInMemory="1000"
+   overflowToDisk="true" 
+   diskPersistent="false" 
+   timeToIdleSeconds="0"
+   timeToLiveSeconds="600" 
+   memoryStoreEvictionPolicy="LRU" />
+ <cache name="serviceCache" eternal="false" maxElementsInMemory="100"
+	overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0"
+	timeToLiveSeconds="300" memoryStoreEvictionPolicy="LRU" />
+  <cache name="methodCache" eternal="false" maxElementsInMemory="100"
+	overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0"
+	timeToLiveSeconds="300" memoryStoreEvictionPolicy="LRU" />
+ <cache name="demoCache" maxBytesLocalHeap="10M" eternal="false" timeToIdleSeconds="3600"
+		timeToLiveSeconds="3600" overflowToDisk="false" />
+</ehcache>

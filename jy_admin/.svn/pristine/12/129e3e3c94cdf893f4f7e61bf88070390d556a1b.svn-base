@@ -1,0 +1,34 @@
+package com.zoomoor.jy.service;
+
+import com.zoomoor.common.base.bean.Pager;
+import com.zoomoor.common.base.service.BaseSvc;
+import com.zoomoor.jy.entity.InfoCustome;
+
+/**
+ * 描述：InfoCustomeSvc 客户信息服务接口
+ * @author Zhangzhenxing
+ * @Date 2015年7月23日 下午4:15:44
+ * @version 1.0
+ */
+public interface InfoCustomeSvc extends BaseSvc<InfoCustome, Integer>{
+	
+	/**
+	 * 描述：获取lookup分页数据
+	 * @param querytName 客户姓名
+	 * @param queryTel 查询电话
+	 * @param CarNO 车牌号
+	 * */
+	Pager getLookupPager(Pager pager,String querytName,String queryTel,String CarNO);
+	
+	/**
+	 * 描述:删除客户信息
+	 * @param customerId客户ID信息
+	 * */
+	void deleteCustomerById(Integer customerId);
+	
+	/**
+	 * 描述：更新
+	 * */
+	void updateByCustome(InfoCustome infoCustome);
+
+}

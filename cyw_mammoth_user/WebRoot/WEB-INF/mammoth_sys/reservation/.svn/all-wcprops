@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mammoth/!svn/ver/3097/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation
+END
+groupbook.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/3230/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/groupbook.jsp
+END
+roomCharaterAlert.jspf
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/Mammoth/!svn/ver/1946/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/roomCharaterAlert.jspf
+END
+groupbookDetail.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/Mammoth/!svn/ver/3002/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/groupbookDetail.jsp
+END
+fitbook.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/3230/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/fitbook.jsp
+END
+checkInInput.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/Mammoth/!svn/ver/1946/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/checkInInput.jsp
+END
+roomTypeAlert.jspf
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mammoth/!svn/ver/2792/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/roomTypeAlert.jspf
+END
+selectRoomsAlert.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/Mammoth/!svn/ver/2796/develop/trunk/cyw_mammoth_user/WebRoot/WEB-INF/mammoth_sys/reservation/selectRoomsAlert.jsp
+END

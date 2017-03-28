@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3
+END
+HibernateTree.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/HibernateTree.java
+END
+HibernateBaseDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/HibernateBaseDao.java
+END
+HibernateSimpleDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/HibernateSimpleDao.java
+END
+PriorityComparator.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/PriorityComparator.java
+END
+Updater.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/Updater.java
+END
+Finder.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/Finder.java
+END
+PriorityInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/PriorityInterface.java
+END
+MySQLServerDialect.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/hibernate3/MySQLServerDialect.java
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image
+END
+ImageScale.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image/ImageScale.java
+END
+ImageScaleImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image/ImageScaleImpl.java
+END
+MagickImageScale.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image/MagickImageScale.java
+END
+AverageImageScale.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image/AverageImageScale.java
+END
+ImageInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image/ImageInfo.java
+END
+ImageUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/common/image/ImageUtils.java
+END

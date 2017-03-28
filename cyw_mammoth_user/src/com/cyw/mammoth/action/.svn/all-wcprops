@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Mammoth/!svn/ver/3204/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action
+END
+HconsumeAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3196/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HconsumeAction.java
+END
+HsettleAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/1470/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HsettleAction.java
+END
+RoomManagerAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/2959/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/RoomManagerAction.java
+END
+GstBillAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/GstBillAction.java
+END
+HroomPlanAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/3229/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HroomPlanAction.java
+END
+RoomNumAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/RoomNumAction.java
+END
+ParameterAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/920/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/ParameterAction.java
+END
+HgstOriTypeAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/2146/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HgstOriTypeAction.java
+END
+HfunctionAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2703/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HfunctionAction.java
+END
+DayAuditAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3179/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/DayAuditAction.java
+END
+HcodesAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HcodesAction.java
+END
+HroomTypeAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HroomTypeAction.java
+END
+HolidaysAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3032/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HolidaysAction.java
+END
+RoomFixFrozenAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/2953/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/RoomFixFrozenAction.java
+END
+FguestSearchAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2392/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/FguestSearchAction.java
+END
+WijmoAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/WijmoAction.java
+END
+RoomsAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/3038/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/RoomsAction.java
+END
+NoGuestAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/3195/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/NoGuestAction.java
+END
+GrpDocAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Mammoth/!svn/ver/2934/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/GrpDocAction.java
+END
+BaseAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Mammoth/!svn/ver/1630/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/BaseAction.java
+END
+RmtypeNumAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/856/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/RmtypeNumAction.java
+END
+HfolkAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Mammoth/!svn/ver/1470/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HfolkAction.java
+END
+HcountryAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/1470/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HcountryAction.java
+END
+WorkGroupAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2753/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/WorkGroupAction.java
+END
+HroomCharactersAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HroomCharactersAction.java
+END
+WardContinuedLiveAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/Mammoth/!svn/ver/3212/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/WardContinuedLiveAction.java
+END
+HexchangeAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/1470/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HexchangeAction.java
+END
+GuestDetailAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3249/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/GuestDetailAction.java
+END
+ClockRoomAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/1257/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/ClockRoomAction.java
+END
+HgstOriAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Mammoth/!svn/ver/2146/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HgstOriAction.java
+END
+MarketingAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/3158/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/MarketingAction.java
+END
+HsetlKindAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/1470/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HsetlKindAction.java
+END
+BookCheckInAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3204/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/BookCheckInAction.java
+END
+BookRoomAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3247/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/BookRoomAction.java
+END
+ReportDocAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2141/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/ReportDocAction.java
+END
+OperatorAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3196/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/OperatorAction.java
+END
+GroupBookRoomAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Mammoth/!svn/ver/3230/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/GroupBookRoomAction.java
+END
+GuestdocAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/3215/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/GuestdocAction.java
+END
+HroomDefineAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HroomDefineAction.java
+END
+CodeCareAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/CodeCareAction.java
+END
+HbuildingAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/Mammoth/!svn/ver/2620/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/HbuildingAction.java
+END
+ComprehensiveSearchAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Mammoth/!svn/ver/2407/develop/trunk/cyw_mammoth_user/src/com/cyw/mammoth/action/ComprehensiveSearchAction.java
+END

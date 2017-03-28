@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Mammoth/!svn/ver/3196/develop/trunk/cyw_mammoth_user/WebRoot/js/syssetting/permission
+END
+hfunction_control_list.js
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Mammoth/!svn/ver/2793/develop/trunk/cyw_mammoth_user/WebRoot/js/syssetting/permission/hfunction_control_list.js
+END
+workGroup_list.js
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2957/develop/trunk/cyw_mammoth_user/WebRoot/js/syssetting/permission/workGroup_list.js
+END
+hfunction_list.js
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2957/develop/trunk/cyw_mammoth_user/WebRoot/js/syssetting/permission/hfunction_list.js
+END
+workGroup_auth.js
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Mammoth/!svn/ver/2793/develop/trunk/cyw_mammoth_user/WebRoot/js/syssetting/permission/workGroup_auth.js
+END
+operator_list.js
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Mammoth/!svn/ver/3244/develop/trunk/cyw_mammoth_user/WebRoot/js/syssetting/permission/operator_list.js
+END

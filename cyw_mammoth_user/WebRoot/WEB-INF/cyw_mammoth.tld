@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>Spring Framework JSP Form Tag Library</description>
+	<tlib-version>3.0</tlib-version>
+	<short-name>mammoth</short-name>
+	<uri>http://www.cyw.so/tags/mammoth</uri>
+    <tag>
+      <description>AuthJudgeDisableTag</description>
+      <name>AuthJudge</name>
+      <tag-class>com.cyw.mammoth.web.taglib.AuthJudgeDisableTag</tag-class>
+      <body-content>JSP</body-content>
+      <attribute>
+			<name>funcId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
+     <tag>
+      <description>UserInfoTag</description>
+      <name>UserInfo</name>
+      <tag-class>com.cyw.mammoth.web.taglib.UserInfoTag</tag-class>
+      <body-content>JSP</body-content>
+      <attribute>
+			<name>propertyName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
+</taglib>

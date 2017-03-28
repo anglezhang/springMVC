@@ -1,0 +1,413 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ include file="../include/taglib.jsp" %>
+<form id="pagerForm" method="post" action="${pageContext.request.contextPath}/depot/opensearch.action?summaryId=${summaryId}">
+	<input type="hidden" name="pageNum" value="${pager.pageNum}" />
+	<input type="hidden" name="numPerPage" value="${pager.numPerPage}" />
+	<input type="hidden" name="queryBusinessNo" value="${queryBusinessNo}" />
+</form>
+<div class="pageHeader">
+	<form onsubmit="return dialogSearch(this);" action="${pageContext.request.contextPath}/depot/opensearch.action?summaryId=${summaryId}" method="post">
+		<div class="searchBar">
+			<table class="searchContent">
+				<tr>
+					<td>
+						筛选条件：<input type="text" name="queryBusinessNo" placeholder="业务单号、配件名称、配件编号" size="25" value="${queryBusinessNo}"/>
+					</td>
+					<td>   
+						<div class="buttonActive"><div class="buttonContent"><button type="submit" id="dept_ref_s">检索</button></div></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
+<div class="pageContent">
+	<div class="panelBar">
+				
+	</div>
+	<table class="table" width="100%" layoutH="115">
+		<thead>
+	<!-- 采购头部信息 -->
+			<c:if test="${summaryId==1||summaryId==2 }">
+			<tr id="cg_thead" align="center">
+				<th><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th>配件编号</th>
+				<th>配件名称</th>
+				<th>成本价</th>
+				<th>采购不含税单价</th>
+				<th>采购含税单价</th>
+				<th>采购数量</th>
+				<th>最小单位</th>
+				<th>配件品牌</th>
+				<th>配件规格</th>
+				<th>当前库存</th>
+			</tr>
+		</c:if>	
+			<!-- 调拨头部信息 -->
+			<c:if test="${summaryId==3||summaryId==7 }">
+			<tr id="db_thead" align="center">
+				<th><input type="checkbox" group="ids" class="checkboxCtrl"></th>
+				<th>调拨单号</th>
+				<th>配件编号</th>
+				<th>配件名称</th>
+				<th>成本价</th>
+				<th>调拨数量</th>
+				<th>最小单位</th>
+				<th>配件品牌</th>
+				<th>配件规格</th>
+				<th>调拨来源</th>
+				<th>当前库存</th>
+				<%-- <c:if test="${summaryId==3}">
+				<th>调拨日期</th>
+				</c:if> --%>
+			</tr>
+			</c:if>
+			<!-- 维修领料头部信息 -->
+			<c:if test="${summaryId==5||summaryId==6 }">
+			<tr id="wx_thead" align="center">
+				<th></th>
+				<th>服务单号</th>
+				<c:if test="${summaryId==6 }">
+				<th>出库单号</th>
+				<th>出库时间</th>
+				</c:if>
+				<th>车牌号</th>
+				<th>品牌车系名称</th>
+				<th>发动机号</th>
+				<th>车架vin号</th>
+				<th>颜色</th>
+				<th>最新里程</th>
+				<th>排量</th>
+			</tr>
+			</c:if>
+			<!-- 盘点头部信息 -->
+			<c:if test="${summaryId==4||summaryId==8 }">
+			<tr id="pd_thead" align="center">
+				<th><input type="checkbox" group="ids" class="checkboxCtrl" ></th>
+				<th>盘点单号</th>
+				<th>配件编号</th>
+				<th>配件名称</th>
+				<th>成本价</th>
+				<th>最小单位</th>
+				<th>配件品牌</th>
+				<th>配件规格</th>
+				<c:if test="${summaryId==4}"><th>盘盈数量</th></c:if>
+				<c:if test="${summaryId==8}"><th>盘亏数量</th></c:if>
+				<th>当前库存</th>
+			</tr>
+			</c:if>
+			<!-- 盘点头部信息 -->
+			<c:if test="${summaryId==11}">
+			<tr id="ly_thead" align="center">
+				<th><input type="checkbox" group="ids" class="checkboxCtrl" ></th>
+				<th>配件编号</th>
+				<th>配件名称</th>
+				<th>成本价</th>
+				<th>最小单位</th>
+				<th>配件品牌</th>
+				<th>配件规格</th>
+				<th>当前库存</th>
+			</tr>
+			</c:if>
+		</thead>
+		<tbody id="goodtbody_bill_manager">
+			<c:forEach items="${list}" var="list" varStatus="s">
+					<c:if test="${summaryId==1||summaryId==2 }">
+					<!-- 采购 -->
+						<tr align="center" id="tr_${s.index }">
+							<input value="${list.goods_id }" name="deptvo[${s.index }].goodsId" type="hidden"/>
+							<input value="${list.unit_id }" name="deptvo[${s.index }].unitId" type="hidden"/>
+							<input value="${list.tag_id }" name="deptvo[${s.index }].tagId" type="hidden"/>
+							<input value="${list.come_id }" name="deptvo[${s.index }].comeId" type="hidden"/>
+							<input value="0" name="deptvo[${s.index }].listId" type="hidden"/>
+							<td>
+								<input type="checkbox"  name="ids" value="${list.tag_id},${list.come_id },${list.goods_id },${list.order_num}">
+							</td>
+							<td>${list.goods_code }</td>
+							<td>${list.name}</td>
+							<td><fmt:formatNumber value="${list.cost_price}" pattern="#0.00"/></td>
+							<td><fmt:formatNumber value="${list.order_price}" pattern="#0.00"/></td>
+							<td><fmt:formatNumber value="${list.order_price_incTax}" pattern="#0.00"/></td>
+							<td><fmt:formatNumber value="${list.order_num}" pattern="#0.00"/></td>
+							<td>${list.unit}</td>
+							<td>${list.goods_brand}</td>
+							<td>${list.standard}</td>
+							
+							<td><fmt:formatNumber value="${list.stock}" pattern="#0.00"/></td>
+						</tr> 
+					</c:if>
+					
+					<c:if test="${summaryId==3||summaryId==7 }">
+					<!-- 调拨 -->
+					<tr align="center" id="tr_${s.index }">
+						<input value="${list.goods_id }" name="deptvo[${s.index }].goodsId" type="hidden"/>
+						<input value="${list.unit_id }" name="deptvo[${s.index }].unitId" type="hidden"/>
+						<input value="${list.tag_id }" name="deptvo[${s.index }].tagId" type="hidden"/>
+						<input value="${list.come_id }" name="deptvo[${s.index }].comeId" type="hidden"/>
+						<td>
+							<input type="checkbox"  <c:if test="${list.stock<=0 && summaryId==7}">disabled="disabled" style="display: none"</c:if> name="ids" value="${list.tag_id},${list.come_id},${list.goods_id },<c:if test="${summaryId==3 }">${list.out_num}</c:if><c:if test="${summaryId==7 }">${list.num}</c:if>">
+						</td>
+						<td>${list.allocation_no }</td>
+						<td>${list.goods_code }</td>
+						<td>${list.name}</td>
+						<td>${list.cost_price}</td>
+						<td>
+						<c:if test="${summaryId==3 }"><fmt:formatNumber value="${list.out_num }" pattern="#.00" /></c:if>
+						<c:if test="${summaryId==7 }"><fmt:formatNumber value="${list.num}" pattern="#.00" /></td></c:if>
+						<td>${list.unit}</td>
+						<td>${list.goods_brand}</td>
+						<td>${list.standard}</td>
+						<td>${list.fromName}</td>
+						<td><fmt:formatNumber value="${list.stock}" pattern="#0.00"/></td>
+						<%-- <c:if test="${summaryId==3}"><td>${fn:substring(list.take_date,0,19)}</td></c:if> --%>
+					</tr> 
+					</c:if>
+					<c:if test="${summaryId==5||summaryId==6 }">
+					<!-- 维修 -->
+					<tr align="center" id="tr_${s.index }">
+						<td>
+							<input type="radio" name="ids" value="${list.tag_id},${list.come_id},${list.goods_id },${list.cusordernum},${list.car_brand_id}">
+						</td>
+						<td>${list.cusordernum }</td>
+						<c:if test="${summaryId==6 }">
+						<td>${list.b_no }</td>
+						<td>${fn:substring(list.bill_date,0,19)}</td>
+						</c:if>
+						<td>${list.platenum}</td>
+						<td>${list.brandName}</td>
+						<td>${list.vinnum}</td>
+						<td>${list.framnum}</td>
+						<td>${list.color}</td>
+						<td>${list.mileage}</td>
+						<td>${list.displacement}</td>
+					</tr> 
+					</c:if>
+					
+					<c:if test="${summaryId==4||summaryId==8 }">
+					<!-- 盘点 -->
+					<tr align="center" id="tr_${s.index }">
+							<input value="${list.goods_id }" name="deptvo[${s.index }].goodsId" type="hidden"/>
+							<input value="${list.unit_id }" name="deptvo[${s.index }].unitId" type="hidden"/>
+							<input value="${list.tag_id }" name="deptvo[${s.index }].tagId" type="hidden"/>
+							<input value="${list.come_id }" name="deptvo[${s.index }].comeId" type="hidden"/>
+							<input value="0" name="deptvo[${s.index }].listId" type="hidden"/>
+						<td>
+							<input type="checkbox" name="ids" value="${list.tag_id},${list.come_id},${list.goods_id },${list.check_balance}">
+						</td>
+						<td>${list.b_no}</td>
+						<td>${list.goods_code }</td>
+						<td>${list.name}</td>
+						<td>${list.cost_price}</td>
+						<td>${list.unit}</td>
+						<td>${list.goods_brand}</td>
+						<td>${list.standard}</td>
+						<td><fmt:formatNumber value="${list.check_balance}" pattern="#.0000" /></td>
+						<td>${list.stock }</td>
+					</tr> 
+					</c:if>
+					
+					<c:if test="${summaryId==11 }">
+					<!-- 领用 -->
+					<tr align="center" id="tr_${s.index }">
+							<input value="${list.goods_id }" name="deptvo[${s.index }].goodsId" type="hidden"/>
+							<input value="${list.unit_id }" name="deptvo[${s.index }].unitId" type="hidden"/>
+							<input value="0" name="deptvo[${s.index }].tagId" type="hidden"/>
+							<input value="${list.come_id }" name="deptvo[${s.index }].comeId" type="hidden"/>
+							<input value="0" name="deptvo[${s.index }].listId" type="hidden"/>
+						<td>
+							<input type="checkbox" name="ids" value="${list.tag_id},${list.come_id},${list.goods_id },${list.balance}">
+						</td>
+						<td>${list.goods_code }</td>
+						<td>${list.name}</td>
+						<td>${list.cost_price}</td>
+						<td>${list.unit}</td>
+						<td>${list.goods_brand}</td>
+						<td>${list.standard}</td>
+						<td>${list.balance}</td>
+					</tr> 
+					</c:if>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>
+<div class="formBar">
+	<ul>
+		<tag:auth code="depot.openbill,depot.openbill.wx">
+		<li>
+			<div class="button"><div class="buttonContent" ><button type="button"  onclick="printBill('${summaryId}');">确认</button></div></div>
+		</li>
+		</tag:auth>
+		<li>
+			<div class="button"><div class="buttonContent"><button type="button" class="close" id="bill_close">关闭</button></div></div>
+		</li>
+	</ul>
+</div>
+<script>
+	function printBill(summid){
+		var ischecked=false;
+		var wxtagId="";
+		var wxcomeId="";
+		var carbrandId;
+		//删除未选中的选项
+		$("input[name='ids']").each(function(index){
+			if(($(this).attr("checked")!="checked")||$(this).attr("disabled")=="disabled"){
+				$("#tr_"+index).remove();
+			}else{
+				ischecked=true;
+				var obj=$("#tr_"+index+" td").get(0);
+				$(obj).remove();
+				var objStr=$(this).val().split(",");
+				var tagId=objStr[0];
+				var comeId=objStr[1];
+				var goodsId=objStr[2];
+				var num=objStr[3];
+					carbrandId=objStr[4];
+				//采购
+				if(summid==1||summid==2){
+				$("#tr_"+index+" td:last-child")
+					.append("<input type='hidden' id='position_"+tagId+"' name='positions' />")
+					.append("<td><input type='checkbox' name='deptvo["+index+"].isIncludeTax' value='1' /></td><td><input id='num_"+tagId+"' ondblclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','"+index+"')\"   type='text' readonly='readonly' name='deptvo["+index+"].countNum' class='required' size='5'/></td>")
+					.append("<td><a title='设置' href='javascript:void(0);' onclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','"+index+"')\" class='btn btn-xj'></a><a title='删除' href='javascript:void(0);' onclick='removeTd(this);' class='btn btn-delete'></a></td>");
+				}
+				//调拨
+				if(summid==3||summid==7){
+					//if(summid==3){tagId=index;}
+					$("#tr_"+index+" td:last-child")
+					.append("<input type='hidden' id='position_"+index+"' name='positions' />")
+					.append("<td><input id='num_"+index+"'  type='text' readonly='readonly' name='deptvo["+index+"].countNum' class='required'  ondblclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','"+index+"')\" size='5'/></td>")
+					.append("<td><a title='设置' href='javascript:void(0);' onclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','"+index+"')\" class='btn btn-xj'></a><a title='删除' href='javascript:void(0);' onclick='removeTd(this);' class='btn btn-delete'></a></td>");
+				}
+				
+				if(summid==4||summid==8){
+				num=parseFloat(objStr[3]).toFixed(0);
+				$("#tr_"+index+" td:last-child")
+					.append("<input type='hidden' id='position_"+tagId+"' name='positions' />")
+					.append("<td><input id='num_"+tagId+"' ondblclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','')\" value='"+num+"'   type='text' readonly='readonly' name='deptvo["+index+"].countNum' class='required' size='5'/></td>")
+					.append("<td><a title='设置' href='javascript:void(0);' onclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','')\" class='btn btn-xj'></a><a title='删除' href='javascript:void(0);' onclick='removeTd(this);' class='btn btn-delete'></a></td>");
+			
+				}
+				
+				if(summid==11){
+				$("#tr_"+index+" td:last-child")
+					.append("<input type='hidden' id='position_"+comeId+"' name='positions' />")
+					.append("<td><input id='num_"+comeId+"' ondblclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','')\"   type='text' readonly='readonly' name='deptvo["+index+"].countNum' class='required' size='5'/></td>")
+					.append("<td><a title='设置' href='javascript:void(0);' onclick=\"openCW('"+tagId+"','"+comeId+"','"+summid+"','"+goodsId+"','"+num+"','')\" class='btn btn-xj'></a><a title='删除' href='javascript:void(0);' onclick='removeTd(this);' class='btn btn-delete'></a></td>");
+			
+				}
+				//维修出库
+				if(summid==5){
+					wxtagId=tagId;
+					wxcomeId=comeId;
+					$("#tr_"+index+" td:last-child").append("<input type='hidden'  value='"+tagId+"' name='tagId' />")
+					//ajax加载服务对应的商品信息
+					//getGoodsInfoByServiceId(num);
+				}
+				//维修退库
+				if(summid==6){
+					wxtagId=tagId;
+					wxcomeId=comeId;
+					//ajax加载服务对应的商品信息
+					getGoodsInfoByServiceId(num);
+				}
+			}
+		});
+		if(!ischecked){
+			var errorMsg = new Object();
+			errorMsg.statusCode = 300;
+			errorMsg.message = "请选择业务信息";
+			dialogAjaxDone(errorMsg);
+			return;
+		}
+		$("#goodtbody_bill").empty();
+		var billHtml=$("#goodtbody_bill_manager").html();
+		$("#goodtbody_bill").html(billHtml);
+		if(summid==1||summid==2){
+			$("#cg_thead").show();
+		}	
+		if(summid==3||summid==7){
+			$("#db_thead").show();
+		}
+		if(summid==4||summid==8){
+			$("#pd_thead").show();
+		}
+		if(summid==5||summid==6){
+			$("#wx_thead").show();
+			$("#wx_table_bill").show();
+			$("#wx_div_bill").show();
+			$("#wx_goodtable_bill").show();
+			//异步查询服务项目
+			getServiceItem(wxtagId);
+			$("#bill_tagId").val(wxtagId);
+			$("#bill_comeId").val(wxcomeId);
+			$("#servicegoodsLookup_manager").attr("href","${pageContext.request.contextPath}/service/servicegoodslookup.do?brandId="+carbrandId);
+		}
+		if(summid==11){
+			$("#ly_thead").show();
+		}	
+		$("#bill_close").click();
+	
+	}
+function removeTd(obj){
+	$(obj).parent().parent().remove();
+}
+function  openCW(tag_id,come_id,summid,goodsid,num,index){
+	//出库打开库存列表
+	if(summid==2||summid==7||summid==8||summid==11){
+		var url="${pageContext.request.contextPath}/depot/openbill.action?goodsId="+goodsid+"&tagId="+tag_id+"&comeId="+come_id+"&num="+num+"&summaryId="+summid+"&inx="+index;
+		$.pdialog.open(url, "depot_bill_dialog", "设置", {width: 1000, height: 650, mask:true});
+	}else{
+		var url="${pageContext.request.contextPath}/depot/openposition.action?tagId="+tag_id+"&comeId="+come_id+"&num="+num+"&summaryId="+summid+"&inx="+index;
+		$.pdialog.open(url, "depot_position_dialog", "设置", {width: 600, height: 650, mask:true});
+	}
+}	
+function getServiceItem(tagId){
+	var url="${pageContext.request.contextPath}/depot/getServiceItem.ajax";
+	$.post(url,{tagId:tagId},function(data){
+			var objArray= new Array();
+			objArray=eval(data);
+			var servicehtml="";
+			for(var i=0;i<objArray.length;i++){
+				servicehtml+="<tr align='center'>";
+				servicehtml+="<td>"+objArray[i][0]+"</td>";
+				servicehtml+="<td>"+objArray[i][1]+"</td>";
+				servicehtml+="<td>"+objArray[i][3]+"</td>";
+				servicehtml+="<td>"+objArray[i][2]+"</td>";
+				servicehtml+="</tr>";
+			}
+			$("#tbody_bill_service").html(servicehtml);
+			
+			
+			
+	})
+}
+function getGoodsInfoByServiceId(serviceCode){
+	var url="/depot/getgoodsinfo.ajax";
+	$.post(url,{serviceCode:serviceCode},function(data){
+			var objArray= new Array();
+			objArray=data;
+			var serviceGoodsHtml="";
+			for(var i=0;i<objArray.length;i++){
+			serviceGoodsHtml+="<tr align='center'>";
+			serviceGoodsHtml+="<input value='"+objArray[i].goods_id+"' name='deptvo["+i+"].goodsId' type='hidden'>";
+			serviceGoodsHtml+="<input value='"+objArray[i].unit_id+"' name='deptvo["+i+"].unitId' type='hidden'>";
+			serviceGoodsHtml+="<input value='"+objArray[i].tag_id+"' name='deptvo["+i+"].tagId' type='hidden'>";
+			serviceGoodsHtml+="<input value='"+objArray[i].come_id+"' name='deptvo["+i+"].comeId' type='hidden'>";
+			serviceGoodsHtml+="<input value='0' name='deptvo["+i+"].listId' type='hidden'>";
+			serviceGoodsHtml+="<td>"+objArray[i].goods_code+"</td>";
+			serviceGoodsHtml+="<td>"+objArray[i].name+"</td>";
+			serviceGoodsHtml+="<td>"+objArray[i].cost_price+"</td>";
+			serviceGoodsHtml+="<td>"+objArray[i].unit+"</td>";
+			serviceGoodsHtml+="<td>"+objArray[i].goods_brand+"</td>";
+			serviceGoodsHtml+="<td>"+objArray[i].standard+"</td>";
+			serviceGoodsHtml+="<td>"+objArray[i].num+"</td>";
+			serviceGoodsHtml+="<td><input id='num_"+i+"' type='text' ondblclick=\"openCWwx('"+objArray[i].tag_id+"','','6','"+objArray[i].goods_id+"','"+objArray[i].num+"','"+i+"')\" name='deptvo["+i+"].countNum' class='required' size='10' readonly='readonly'></td>";
+			serviceGoodsHtml+="<td><input type='hidden' id='position_"+i+"' name='positions'>";
+			serviceGoodsHtml+="<a title='设置' href='javascript:void(0);' onclick=\"openCWwx('"+objArray[i].tag_id+"','','6','"+objArray[i].goods_id+"','"+objArray[i].num+"','"+i+"')\" class='btn btn-xj'></a>";	
+			serviceGoodsHtml+="<a onclick='deleteLine(this),removeGoodid("+i+")' class='btn btn-delete'></a>";	
+			serviceGoodsHtml+="</td>";
+			serviceGoodsHtml+="</tr>";
+			}
+			$("#goodtbody_depot_bill").html(serviceGoodsHtml);
+	})
+}
+</script>

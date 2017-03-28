@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+.border_999{
+	border:#999999 1px solid;
+	}
+.border_bottom999{
+	border-bottom:#999999 1px solid;
+	}
+.marginBottom30{
+	margin-bottom:30px;
+	}	
+.bold_1{
+	font-size:18px;
+	font-weight:bold;
+	color:#535353;
+	}
+.bold_2{
+	font-size:16px;
+	font-weight:bold;
+	color:#535353;
+	}
+.content{
+	width:1180px;
+	margin:50px auto;
+	padding:20px 0;
+	}
+.title{
+	font-size:28px;
+	color:#535353px;
+	margin-bottom:15px;
+	text-align:center;
+	}
+.title_lx{
+	font-size:20px;
+	color:#535353px;
+	text-align:center;
+	padding-bottom:30px;
+	}
+.table_1{
+	width:98%;
+	margin-left:2%;
+	}
+.div_1{
+	padding:20px 0;
+	}
+.table_1 td{
+	height:40px;
+	line-height:40px;
+	font-size:14px;
+	color:#535353;
+	}
+.table_2{
+	width:98%;
+	margin-left:2%;
+	}
+.table_2 td{
+	height:40px;
+	line-height:40px;
+	font-size:14px;
+	color:#535353;
+	text-align:center;
+	}
+.table_3{
+	width:98%;
+	margin-left:2%;
+	}
+.table_3 td{
+	height:40px;
+	line-height:40px;
+	font-size:14px;
+	color:#535353;
+	}
+
+.card_dy{
+	width:120px;
+	height:30px;
+	line-height:30px;
+	background:#34cadf;
+	border:none;
+	cursor:pointer;
+	color:#fff;
+	font-size:14px;
+	}

@@ -1,0 +1,155 @@
+package com.zoomoor.jy.dao.impl;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.stereotype.Repository;
+
+import com.zoomoor.common.base.dao.impl.BaseDaoImpl;
+import com.zoomoor.common.util.ArrayUtils;
+import com.zoomoor.jy.dao.DepotBillDao;
+import com.zoomoor.jy.entity.DepotBill;
+@Repository
+public class DepotBillDaoImpl extends BaseDaoImpl<DepotBill, Integer> implements
+		DepotBillDao {
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List saveDepot(String mainStr, String listStr, String listRowStr,Integer userId) {
+		List list=null;
+		Connection conn_order=null;
+		try {
+			conn_order = (Connection) SessionFactoryUtils.getDataSource(sessionFactory).getConnection();
+			CallableStatement call_order = (CallableStatement) conn_order.prepareCall("{call u_DepotBillSave(?,?,?,?)}");
+			call_order.setString(1, mainStr);
+			call_order.setString(2, listStr);
+			call_order.setString(3, listRowStr);
+			call_order.setInt(4, userId);
+			ResultSet rs_order=null;
+			rs_order = call_order.executeQuery();
+			list = ArrayUtils.resultSetToList(rs_order);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				conn_order.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public List getBillListById(Integer summaryId,String queryBusinessNo, Integer userId) {
+		List list=null;
+		Connection conn_bill=null;
+		try {
+			conn_bill = (Connection) SessionFactoryUtils.getDataSource(sessionFactory).getConnection();
+			CallableStatement call_bill = (CallableStatement) conn_bill.prepareCall("{call u_GetDepotTagList(?,?,?)}");
+			call_bill.setInt(1, summaryId);
+			call_bill.setString(2, queryBusinessNo==null?"":queryBusinessNo);
+			call_bill.setInt(3, userId);
+			ResultSet rs_bill=null;
+			rs_bill = call_bill.executeQuery();
+			list = ArrayUtils.resultSetToList(rs_bill);
+		} catch (Exception e) {
+				e.printStackTrace();
+		}finally{
+			try {
+				conn_bill.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public List getServiceItemByTagId(Integer tagId) {
+		String sql="SELECT s.itemcode as itemcode,s.itemname as itemname,s.workhourmoney as workhourmoney,t.servicename as servicename from serviceitem s" +
+				"  LEFT JOIN servicetype t on s.servicetype_id=t.servicetype_id where s.item_id in " +
+				"(SELECT item_id from customer_entrust_sub where entrust_id="+tagId+") AND s.del=0";
+		return this.getSession().createSQLQuery(sql).list();
+	}
+
+	@Override
+	public List getGoodsInfoExt(Integer goodsId) {
+		List list=null;
+		Connection conn_goods=null;
+		try {
+			conn_goods = (Connection) SessionFactoryUtils.getDataSource(sessionFactory).getConnection();
+			CallableStatement call_goods = (CallableStatement) conn_goods.prepareCall("{call u_GetGoodsOrderInfo(?)}");
+			call_goods.setInt(1, goodsId);
+			ResultSet rs_goods=null;
+			rs_goods = call_goods.executeQuery();
+			list = ArrayUtils.resultSetToList(rs_goods);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				conn_goods.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public List getDepotDetailList(Integer queryDeptId, String queryStartDate,
+			String queryEndDate,Integer summaryId, String queryBno) {
+		List list=null;
+		Connection conn_detail=null;
+		try {
+			conn_detail = (Connection) SessionFactoryUtils.getDataSource(sessionFactory).getConnection();
+			CallableStatement call_detail = (CallableStatement) conn_detail.prepareCall("{call u_GetDepotBillList(?,?,?,?,?)}");
+			call_detail.setInt(1, queryDeptId);
+			call_detail.setString(2, queryStartDate);
+			call_detail.setString(3, queryEndDate);
+			call_detail.setInt(4, summaryId);
+			call_detail.setString(5,queryBno);
+			ResultSet rs_detail=null;
+			rs_detail = call_detail.executeQuery();
+			list = ArrayUtils.resultSetToList(rs_detail);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				conn_detail.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public List getDepotBillPrint(Integer queryDeptId, String queryBno) {
+		List list=null;
+		Connection conn_print=null;
+		try {
+			conn_print = (Connection) SessionFactoryUtils.getDataSource(sessionFactory).getConnection();
+			CallableStatement call_print = (CallableStatement) conn_print.prepareCall("{call u_GetDepotBillPrint(?,?)}");
+			call_print.setInt(1, queryDeptId);
+			call_print.setString(2, queryBno);
+			ResultSet rs_print=null;
+			rs_print = call_print.executeQuery();
+			list = ArrayUtils.resultSetToList(rs_print);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				conn_print.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+}

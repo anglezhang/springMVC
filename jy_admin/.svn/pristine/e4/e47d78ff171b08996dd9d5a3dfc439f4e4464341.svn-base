@@ -1,0 +1,264 @@
+package com.zoomoor.jy.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+/**
+ * CustomerAppoit entity. @author MyEclipse Persistence Tools
+ */
+@Entity
+@Table(name = "customer_appoit" )
+public class CustomerAppoit implements java.io.Serializable {
+
+	// Fields
+
+	private Integer cusappoitId;
+	private InfoCar infoCar;
+	private Integer empId;
+	private Date appoittime;//预约时间
+	private Integer appoittype;
+	private String content;
+	private Integer operator;
+	private Integer source;
+	private Date createtime;//建单时间
+	private Date lastintotime;//上次进店时间
+	private Date latsmaintenance;//上次保养时间
+	private String appname;
+	private String apptel;
+	private String remark;
+	private String description;
+	private Boolean del;
+	private InfoDept infoDept;
+	private InfoCustome infoCustomer;
+	private String cusorderNO;//预约服务单号
+	private Integer cus;//预约单状态
+
+	// Constructors
+
+	/** default constructor */
+	public CustomerAppoit() {
+	}
+
+	/** full constructor */
+	public CustomerAppoit(InfoCar infoCar, Integer empId, Date appoittime,
+			Integer appoittype, String content, Integer operator,
+			Integer source, Date createtime, Boolean del) {
+		this.infoCar = infoCar;
+		this.empId = empId;
+		this.appoittime = appoittime;
+		this.appoittype = appoittype;
+		this.content = content;
+		this.operator = operator;
+		this.source = source;
+		this.createtime = createtime;
+		this.del = del;
+	}
+
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "cusappoit_id", unique = true, nullable = false)
+	public Integer getCusappoitId() {
+		return this.cusappoitId;
+	}
+
+	public void setCusappoitId(Integer cusappoitId) {
+		this.cusappoitId = cusappoitId;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "car_id")
+	public InfoCar getInfoCar() {
+		return this.infoCar;
+	}
+
+	public void setInfoCar(InfoCar infoCar) {
+		this.infoCar = infoCar;
+	}
+
+	@Column(name = "emp_id")
+	public Integer getEmpId() {
+		return this.empId;
+	}
+
+	public void setEmpId(Integer empId) {
+		this.empId = empId;
+	}
+
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@Column(name = "appoittime", nullable = true, length = 19)
+	public Date getAppoittime() {
+		return this.appoittime;
+	}
+
+	public void setAppoittime(Date appoittime) {
+		this.appoittime = appoittime;
+	}
+
+	@Column(name = "appoittype")
+	public Integer getAppoittype() {
+		return this.appoittype;
+	}
+
+	public void setAppoittype(Integer appoittype) {
+		this.appoittype = appoittype;
+	}
+
+	@Column(name = "content", length = 100)
+	public String getContent() {
+		return this.content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	@Column(name = "operator")
+	public Integer getOperator() {
+		return this.operator;
+	}
+
+	public void setOperator(Integer operator) {
+		this.operator = operator;
+	}
+
+	@Column(name = "source")
+	public Integer getSource() {
+		return this.source;
+	}
+
+	public void setSource(Integer source) {
+		this.source = source;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createtime", nullable = true, length = 19)
+	public Date getCreatetime() {
+		return this.createtime;
+	}
+
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "lastintotime", nullable = true, length = 19)
+	public Date getLastintotime() {
+		return lastintotime;
+	}
+
+	public void setLastintotime(Date lastintotime) {
+		this.lastintotime = lastintotime;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "latsmaintenance", nullable = true, length = 19)
+	public Date getLatsmaintenance() {
+		return latsmaintenance;
+	}
+
+	public void setLatsmaintenance(Date latsmaintenance) {
+		this.latsmaintenance = latsmaintenance;
+	}
+
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
+
+	@Column(name = "del")
+	public Boolean getDel() {
+		return this.del;
+	}
+
+	public void setDel(Boolean del) {
+		this.del = del;
+	}
+
+	@Column(name = "appname", length = 20)
+	public String getAppname() {
+		return appname;
+	}
+
+	public void setAppname(String appname) {
+		this.appname = appname;
+	}
+
+	@Column(name = "apptel", length = 20)
+	public String getApptel() {
+		return apptel;
+	}
+
+	public void setApptel(String apptel) {
+		this.apptel = apptel;
+	}
+
+	@Column(name = "remark", length = 50)
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	@Column(name = "description", length = 50)
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Transient
+	public InfoDept getInfoDept() {
+		return infoDept;
+	}
+
+	public void setInfoDept(InfoDept infoDept) {
+		this.infoDept = infoDept;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "customer_id")
+	public InfoCustome getInfoCustomer() {
+		return infoCustomer;
+	}
+
+	public void setInfoCustomer(InfoCustome infoCustomer) {
+		this.infoCustomer = infoCustomer;
+	}
+
+	@Column(name = "cusorderNO", length = 50)
+	public String getCusorderNO() {
+		return cusorderNO;
+	}
+
+	public void setCusorderNO(String cusorderNO) {
+		this.cusorderNO = cusorderNO;
+	}
+
+	@Column(name = "cus")
+	public Integer getCus() {
+		return cus;
+	}
+
+	public void setCus(Integer cus) {
+		this.cus = cus;
+	}
+	
+}
